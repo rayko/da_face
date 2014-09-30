@@ -1,0 +1,102 @@
+{
+  "demographic": {
+    "gender": "male"
+  },
+  "interaction": {
+    "author": {
+      "avatar": "http://pbs.twimg.com/profile_images/378800000611513646/92467ae756197245a940eb36e0af80ba_normal.jpeg",
+      "id": 1849605206,
+      "language": "en",
+      "link": "http://twitter.com/TheStockHerald",
+      "name": "Stock Herald",
+      "username": "TheStockHerald"
+    },
+    "content": "$TRLA: 6:24 pm Trulia announces it is experiencing record levels of consumer ... http://t.co/HzINHMznR8",
+    "created_at": "Fri, 16 May 2014 00:24:08 +0000",
+    "id": "1e3dc90650d0a400e074adecd126164a",
+    "link": "http://twitter.com/TheStockHerald/status/467098134435221504",
+    "received_at": 1400199848.5762,
+    "schema": {
+      "version": 3
+    },
+    "source": "dlvr.it",
+    "type": "twitter",
+    "tags": [
+      "trader"
+    ],
+    "tag_tree": {
+      "sentiment_score": 700,
+      "quality_score": 950
+    }
+  },
+  "language": {
+    "confidence": 98,
+    "tag": "en",
+    "tag_extended": "en"
+  },
+  "links": {
+    "code": [
+      403
+    ],
+    "created_at": [
+      "Fri, 16 May 2014 00:24:09 +0000"
+    ],
+    "hops": [
+      [
+        "http://top10stocks2buy.com/i.php?http://www.economonitor.com/nouriel/2008/11/14/20-reasons-why-the-us-consumer-is-capitulating-thus-triggering-the-worst-us-recession-in-decades/&t6t=TRLA"
+      ]
+    ],
+    "normalized_url": [
+      null
+    ],
+    "retweet_count": [
+      0
+    ],
+    "title": [
+      null
+    ],
+    "url": [
+      "http://top10stocks2buy.com/i.php?http://www.economonitor.com/nouriel/2008/11/14/20-reasons-why-the-us-consumer-is-capitulating-thus-triggering-the-worst-us-recession-in-decades/&t6t=TRLA"
+    ]
+  },
+  "salience": {
+    "content": {
+      "sentiment": 0
+    }
+  },
+  "twitter": {
+    "created_at": "Fri, 16 May 2014 00:24:08 +0000",
+    "display_urls": [
+      "top10stocks2buy.com/i.php?http://w…"
+    ],
+    "domains": [
+      "top10stocks2buy.com"
+    ],
+    "id": "467098134435221504",
+    "lang": "en",
+    "links": [
+      "http://top10stocks2buy.com/i.php?http://www.economonitor.com/nouriel/2008/11/14/20-reasons-why-the-us-consumer-is-capitulating-thus-triggering-the-worst-us-recession-in-decades/&t6t=TRLA"
+    ],
+    "source": "<a href=\"http://dlvr.it\" rel=\"nofollow\">dlvr.it</a>",
+    "text": "$TRLA: 6:24 pm Trulia announces it is experiencing record levels of consumer ... http://t.co/HzINHMznR8",
+    "user": {
+      "created_at": "Mon, 09 Sep 2013 22:23:08 +0000",
+      "favourites_count": 0,
+      "followers_count": 169,
+      "friends_count": 0,
+      "geo_enabled": false,
+      "id": 1849605206,
+      "id_str": "1849605206",
+      "lang": "en",
+      "listed_count": 13,
+      "name": "Stock Herald",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/378800000611513646/92467ae756197245a940eb36e0af80ba_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/378800000611513646/92467ae756197245a940eb36e0af80ba_normal.jpeg",
+      "screen_name": "TheStockHerald",
+      "statuses_count": 180136,
+      "time_zone": "Atlantic Time (Canada)",
+      "utc_offset": -10800,
+      "verified": false
+    }
+  }
+}
