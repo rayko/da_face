@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = DaFace::VERSION
   spec.authors       = ["Rayko"]
   spec.email         = ["rayko.drg@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{DataSift Interface.}
+  spec.description   = %q{Interface to interact with Datasift API and get pretty data from them.}
+  spec.homepage      = "https://github.com/rayko/da_face"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
