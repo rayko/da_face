@@ -6,7 +6,7 @@ describe DaFace::Datasift::Demographic do
       @data = JSON.parse(File.read(fixture('interactions/simple.json')))['demographic']
     end
 
-    it 'creates Demographic object with with data' do
+    it 'creates Demographic object' do
       obj = DaFace::Datasift::Demographic.new @data
 
       expect(obj.class).to eq(DaFace::Datasift::Demographic)

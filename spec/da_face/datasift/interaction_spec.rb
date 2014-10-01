@@ -6,7 +6,7 @@ describe DaFace::Datasift::Interaction do
       @data = JSON.parse(File.read(fixture('interactions/simple.json')))['interaction']
     end
     
-    it 'creates Interaction object with data' do
+    it 'creates Interaction object' do
       obj = DaFace::Datasift::Interaction.new @data
       
       expect(obj.class).to eq(DaFace::Datasift::Interaction)
