@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::Links do
   describe '#new' do
     before do
-      @data = JSON.parse(File.read(fixture('links/simple.json')))
+      @data = json_fixture('links/simple.json')
     end
 
     it 'creates Links object' do
@@ -35,7 +35,7 @@ describe DaFace::Datasift::Links do
   describe '#get_elements' do
     context 'for single link' do
       before do
-        @data = JSON.parse(File.read(fixture('links/simple.json')))
+        @data = json_fixture('links/simple.json')
       end
 
       it 'gets first (0) elements of embebbed arrays' do
@@ -49,7 +49,7 @@ describe DaFace::Datasift::Links do
 
     context 'for multiples links' do
       before do
-        @data = JSON.parse(File.read(fixture('links/multiples.json')))
+        @data = json_fixture('links/multiples.json')
       end
       
       it 'gets first (0) elements of embebbed arrays' do

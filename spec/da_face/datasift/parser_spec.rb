@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::Parser do
   before do
     @parser = DaFace::Datasift::Parser.new
-    @json = File.open(fixture('interactions/simple.json')).read
+    @json = fixture('interactions/simple.json')
   end
 
   it 'exists' do
@@ -15,7 +15,7 @@ describe DaFace::Datasift::Parser do
   end
 
   it 'raises error when no json is provided' do
-    expect(Proc.new{@parser.parse_from_json}).to raise_error(DaFace::Datasift::MissingJson)
+    expect(Proc.new{@parser.parse_from_json()}).to raise_error(DaFace::Datasift::MissingJson)
   end
 
 end
