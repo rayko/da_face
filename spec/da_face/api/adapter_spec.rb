@@ -5,8 +5,4 @@ describe DaFace::Api::Adapter do
     expect(DaFace::Api::Adapter.hello).to eq(true)
   end
 
-  it 'constructs headers' do
-    pending
-    expect(false).to eq(true)
-  end
 end

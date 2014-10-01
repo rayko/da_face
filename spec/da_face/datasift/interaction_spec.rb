@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::Interaction do
   describe '#new' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['interaction']
+      @data = JSON.parse(File.read(fixture('interaction/simple.json')))
     end
     
     it 'creates Interaction object' do
@@ -16,7 +16,7 @@ describe DaFace::Datasift::Interaction do
 
   describe 'attributes' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['interaction']
+      @data = JSON.parse(File.read(fixture('interaction/simple.json')))
       @interaction = DaFace::Datasift::Interaction.new @data
     end
 

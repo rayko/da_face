@@ -1,0 +1,68 @@
+{
+  "links": {
+
+    "code": [
+      200
+    ],
+    "created_at": [
+      "Fri, 16 May 2014 00:44:43 +0000"
+    ],
+    "hops": [
+      [
+        "http://klou.tt/pniry0c9pb79"
+      ]
+    ],
+    "meta": {
+      "charset": [
+        "UTF-8"
+      ],
+      "content_type": [
+        "text/html"
+      ],
+      "description": [
+        "Hulu has nabbed marketing veteran Jenny Wall from rival Netflix. She joins the online streamer as svp and head of marketing and will oversee Hulu brand strategy and acquisition and retention channels, among other duties. STORY: Hulu Lands 'Brooklyn Nine-Nine,' 'Mindy,' More NBCUniversal Series"
+      ],
+      "keywords": [
+        [
+          "Tech",
+          "Hulu",
+          "Netflix"
+        ]
+      ],
+      "lang": [
+        "en"
+      ],
+      "opengraph": [
+        {
+          "site_name": "The Hollywood Reporter",
+          "description": "Hulu has nabbed marketing veteran Jenny Wall from rival Netflix.She joins the online streamer as svp and head of marketing and will oversee Hulu brand strategy and acquisition and retention channels, among other duties.STORY: Hulu Lands &#39;Brooklyn Nine-Nine,&#39; &#39;Mindy,&#39; More NBCUniversal Series",
+          "type": "article",
+          "url": "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669",
+          "image": "http://www.hollywoodreporter.com/sites/default/files/imagecache/small_144x81/2014/05/jenny_wall.jpg",
+          "title": "Hulu Taps Netflix Marketing Vet Jenny Wall"
+        }
+      ],
+      "twitter": [
+        {
+          "card": "summary_large_image",
+          "creator": "@THR",
+          "url": "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669",
+          "site": "@THR"
+        }
+      ]
+    },
+    "normalized_url": [
+      "http://hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669"
+    ],
+    "retweet_count": [
+      0
+    ],
+    "title": [
+      "Hulu Taps Netflix Marketing Vet Jenny Wall - The Hollywood Reporter"
+    ],
+    "url": [
+      "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669"
+    ]
+
+  }
+}

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::Language do
   describe '#new' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['language']
+      @data = JSON.parse(File.read(fixture('language/simple.json')))
     end
 
     it 'creates Language object' do
@@ -15,7 +15,7 @@ describe DaFace::Datasift::Language do
 
   describe 'attributes' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['language']
+      @data = JSON.parse(File.read(fixture('language/simple.json')))
       @language = DaFace::Datasift::Language.new @data
     end
     

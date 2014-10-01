@@ -1,0 +1,28 @@
+{
+  "author": {
+    "avatar": "http://pbs.twimg.com/profile_images/378800000611513646/92467ae756197245a940eb36e0af80ba_normal.jpeg",
+    "id": 1849605206,
+    "language": "en",
+    "link": "http://twitter.com/TheStockHerald",
+    "name": "Stock Herald",
+    "username": "TheStockHerald"
+  },
+  "content": "$TRLA: 6:24 pm Trulia announces it is experiencing record levels of consumer ... http://t.co/HzINHMznR8",
+  "created_at": "Fri, 16 May 2014 00:24:08 +0000",
+  "id": "1e3dc90650d0a400e074adecd126164a",
+  "link": "http://twitter.com/TheStockHerald/status/467098134435221504",
+  "received_at": 1400199848.5762,
+  "schema": {
+    "version": 3
+  },
+  "source": "dlvr.it",
+  "type": "twitter",
+  "tags": [
+    "trader"
+  ],
+  "tag_tree": {
+    "sentiment_score": 700,
+    "quality_score": 950
+  }
+
+}

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::Demographic do
   describe '#new' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['demographic']
+      @data = JSON.parse(File.read(fixture('demographic/simple.json')))
     end
 
     it 'creates Demographic object' do
@@ -15,7 +15,7 @@ describe DaFace::Datasift::Demographic do
 
   describe 'attributes' do
     before do
-      @data = JSON.parse(File.read(fixture('interactions/simple.json')))['demographic']
+      @data = JSON.parse(File.read(fixture('demographic/simple.json')))
       @demographic = DaFace::Datasift::Demographic.new @data
     end
 
