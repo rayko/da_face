@@ -15,6 +15,10 @@ module DaFace
         self.url = string_to_uri(data['url'])
       end
 
+      def inspect
+        "<#{self.class}:0x#{(self.object_id << 1).to_s(16)}>"
+      end
+
       private
       def parsed_datetime datetime
         Time.parse(datetime)

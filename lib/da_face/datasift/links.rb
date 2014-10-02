@@ -1,36 +1,10 @@
 module DaFace
   module Datasift
-    class Links
-      attr_reader :links
-
-
+    class Links < Array
       def initialize data
-        @links = self.class.get_elements data
-        @links.map!{|l| DaFace::Datasift::Link.new(l)}
-      end
-
-      def [] index
-        @links[index]
-      end
-
-      def first
-        @links.first
-      end
-
-      def last
-        @links.last
-      end
-
-      def each &block
-        @links.each &block
-      end
-
-      def size
-        @links.size
-      end
-
-      def inspect
-        "<#{self.class}:0x#{(self.object_id << 1).to_s(16)}>"
+        self.class.get_elements(data).each do |e|
+          self << DaFace::Datasift::Link.new(e)
+        end
       end
 
       def self.get_elements data
