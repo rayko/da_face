@@ -6,10 +6,13 @@ describe DaFace::Datasift::Links do
       @data = json_fixture('links/simple.json')
     end
 
-    it 'creates Links object' do
+    it 'returns array of Link objects' do
       obj = DaFace::Datasift::Links.new @data
 
       expect(obj.class).to eq(DaFace::Datasift::Links)
+      obj.each do |o|
+        expect(o.class).to eq(DaFace::Datasift::Link)
+      end
     end
   end
 
