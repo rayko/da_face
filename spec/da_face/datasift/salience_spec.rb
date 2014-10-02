@@ -13,4 +13,19 @@ describe DaFace::Datasift::Salience do
     end
   end
 
+  describe 'attributes' do
+    before do
+      @data = json_fixture('salience/simple.json')
+      @salience = DaFace::Datasift::Salience.new @data
+    end
+    
+    it 'has all required attributes' do
+      expect(@salience.content).to eq(@data['content'])
+    end
+
+    it 'returns sentiment value' do
+      expect(@salience.sentiment).to eq(@data['content']['sentiment'])
+    end
+  end
+
 end
