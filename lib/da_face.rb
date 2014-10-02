@@ -10,6 +10,8 @@ require "da_face/datasift/demographic"
 require "da_face/datasift/language"
 require "da_face/datasift/salience"
 require "da_face/datasift/twitter"
+require "da_face/twitter/tweet"
+require "da_face/twitter/user"
 require "json"
 
 module DaFace
