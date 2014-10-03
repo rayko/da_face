@@ -1,7 +1,7 @@
 module DaFace
   module Twitter
     class Tweet
-      attr_reader :id
+      attr_accessor :id, :user
       
       def initialize attrs={}
         @id = attrs['id']
