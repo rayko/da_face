@@ -41,11 +41,8 @@ describe DaFace::Datasift::Twitter do
         expect(@twitter.retweet.id).to eq(@data['retweet']['id'])
         expect(@twitter.retweeted.id).to eq(@data['retweeted']['id'])
         expect(@twitter.retweet.id).not_to eq(@twitter.retweeted.id)
+        expect(@twitter.retweet.retweet).to eq(true)
       end
-    end
-
-    it 'has tweet information' do
-      
     end
   end
 end

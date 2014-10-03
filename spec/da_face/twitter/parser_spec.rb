@@ -7,7 +7,7 @@ describe DaFace::Twitter::Parser do
     end
 
     it 'creates a Tweet and User object' do
-      obj = DaFace::Twitter::Parser.parse @data
+      obj = DaFace::Twitter::Parser.parse @data, false
 
       expect(obj.class).to eq(DaFace::Twitter::Tweet)
       expect(obj.user.class).to eq(DaFace::Twitter::User)

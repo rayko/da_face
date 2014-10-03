@@ -5,10 +5,10 @@ module DaFace
 
       def initialize data
         if data.keys.include? 'retweet'
-          self.retweet = DaFace::Twitter::Parser.parse data['retweet']
-          self.retweeted = DaFace::Twitter::Parser.parse data['retweeted']
+          self.retweet = DaFace::Twitter::Parser.parse data['retweet'], true
+          self.retweeted = DaFace::Twitter::Parser.parse data['retweeted'], false
         else
-          self.tweet = DaFace::Twitter::Parser.parse data
+          self.tweet = DaFace::Twitter::Parser.parse data, false
         end
       end
     end
