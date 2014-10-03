@@ -25,7 +25,7 @@ module DaFace
       end
 
       def string_to_uri url
-        URI(url)
+        URI(url) if url
       end
     end
   end
