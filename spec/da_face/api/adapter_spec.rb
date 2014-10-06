@@ -90,13 +90,13 @@ describe DaFace::Api::Adapter do
   describe '#get' do
     before do
       @adapter = DaFace::Api::Adapter.new
-      Excon.stub({}, {:body => {'OK' => true}, :status => 200})
+      Excon.stub({}, {:body => {'ok' => true}.to_json, :status => 200})
       @conn = Excon.new 'http://something.com', :mock => true
       allow(@adapter).to receive(:new_connection).and_return(@conn)
     end
 
     it 'performs a get' do
-      expect(@adapter.get('something')).to eq({'OK' => true})
+      expect(@adapter.get('something')).to eq({:ok => true})
     end
   end
 end
