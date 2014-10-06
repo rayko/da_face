@@ -1,6 +1,8 @@
 module DaFace
   module Api
     class Push
+      # TODO Handle error cases in a better way (raise)
+      # TODO Handle empty responses
 
       # Validates output_params for a subscription.
       def self.validate output_config
@@ -8,7 +10,7 @@ module DaFace
         return response
       end
       
-      def self.create subcription
+      def self.create subscription
         response = connection.post 'push/create', subscription
         return response
       end
@@ -38,11 +40,13 @@ module DaFace
         return response
       end
       
+      # TODO Make this work with pagination
       def self.log subscription_id
         response = connection.get 'push/log', {:subscription_id => subscription_id}
         return response
       end
 
+      # TODO Make this work with pagination
       def self.get params={}
         response = connection.get 'push/get', params
         response[:subscriptions].collect{|s| DaFace::Api::PushSubscription.new(s)}

@@ -1,62 +1,39 @@
 module DaFace
   module Api
     class Adapter
+      # TODO Handle headers for rate limits
+      # TODO Handle status codes
+
       # Performs a get operation
       #
       # params is a level 1 hash that should contain params for url
       def get path, params={}
-        response = new_connection.get :path => "#{path}#{url_params(params)}"
-        return parse_json_body(response.body)
+        response = connection.get path, params
+        return symbolize_keys(response.keys, response)
       end
 
       # Performs a post operation
       #
       # payload is a hash that will be parsed to json and sent as body
       def post path, payload
-        response = new_connection.post :path => path, :body => payload.to_json
-        return parse_json_body(response.body)
+        response = connection.post path, payload
+        return true if response.empty?
+        return symbolize_keys(response.keys, response)
       end
       
       # Performs a put operation
       #
       # payload is a hash that will be parsed to json and sent as body
       def put path, payload
-        response = new_connection.put :path => "#{path}", :body => payload.to_json
-        return true if response.body.empty?
-        parse_json_body(response.body)
+        response = connection.put path, payload
+        return true if response.empty?
+        return symbolize_keys(response.keys, response)
       end
 
-      # Transforms a level 1 hash to valid url params
-      #
-      # This will return something like "?something=thing" to be appended 
-      # to url path
-      def url_params params
-        '?' + URI.encode(params.collect{ |key, value| "#{key}=#{value}"}.join('&')) unless params.empty?        
-      end
 
       # Creates a connection with the base path and default headers
-      def new_connection
-        Excon.new api_path, :headers => default_headers
-      end
-
-      # Constructs the base api path for Datasift
-      def api_path
-        "#{config[:host]}#{config[:path_prefix]}"
-      end
-      
-      # Constructs the auth header for Datasift
-      def api_auth_header
-        "#{config[:user]}:#{config[:api_key]}"
-      end
-      
-      # Configuration for the adapter
-      def config
-        {
-          :host => DaFace.configuration.api_host,
-          :path_prefix => DaFace.configuration.api_path_prefix,
-          :user => DaFace.configuration.user,
-          :api_key => DaFace.configuration.api_key
-        }
+      def connection
+        DaFace.configuration.adapter_class.new
       end
 
       # Parses a json body and sybmolizes the hash returned
@@ -85,14 +62,6 @@ module DaFace
         return new_hash
       end
       
-      # Constructs default headers for operations
-      def default_headers
-        {
-          :authorization => api_auth_header,
-          :content_type => :json,
-          :accept => :json
-        }
-      end
     end
   end
 end

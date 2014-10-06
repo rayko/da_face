@@ -9,8 +9,10 @@ describe DaFace::Api::Push do
       config.api_key = 'cat'
     end
     @adapter = DaFace::Api::Adapter.new
+    @excon_adapter = DaFace::Api::Adapters::ExconAdapter.new
     @conn = Excon.new 'http://host.com/lolcat', :mock => true
-    allow(@adapter).to receive(:new_connection).and_return(@conn)
+    allow(@excon_adapter).to receive(:connection).and_return(@conn)
+    allow(@adapter).to receive(:connection).and_return(@excon_adapter)
     allow(DaFace::Api::Push).to receive(:connection).and_return(@adapter)
   end
 
@@ -93,4 +95,15 @@ describe DaFace::Api::Push do
     end
   end
 
+  describe '.create' do
+    before do
+      Excon.stub({:path => '/push/create'}, 
+                 {:status => 200})
+    end
+
+    it 'creates a subscription in datasift' do
+      data = DaFace::Api::Push.create :some_sub => 'data'
+      expect(data).not_to eq(nil)
+    end
+  end
 end

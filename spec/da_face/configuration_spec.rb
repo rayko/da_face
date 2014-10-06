@@ -7,6 +7,7 @@ describe DaFace::Configuration do
 
       expect(config.api_path_prefix).to eq('/v1')
       expect(config.api_host).to eq('http://api.datasift.com')
+      expect(config.adapter_class).to eq(DaFace::Api::Adapters::ExconAdapter)
       expect(config.user).to eq(nil)
       expect(config.api_key).to eq(nil)
     end
