@@ -1,10 +1,10 @@
 module DaFace
   module Api
-    class Push
+    class PushSubscription
       attr_accessor :name, :hash, :initial_status, :start, :end,
-                    :hash_type, :connector, :playback_id
+                    :output_params, :output_type, :playback_id
 
-      attr_reader :id, :created_at, :user_id, :hash_type, :status, ,:last_request, 
+      attr_reader :id, :created_at, :user_id, :hash_type, :status, :last_request, 
                   :last_success, :remaining_bytes, :lost_data
 
       def initialize attrs
@@ -13,6 +13,7 @@ module DaFace
         @hash_type = attrs[:hash_type]
         @status = attrs[:status]
         @last_request = attrs[:last_request]
+        @last_success = attrs[:last_success]
         @remaining_bytes = attrs[:remaining_bytes]
         @lost_data = attrs[:lost_data]
         @name = attrs[:name]
@@ -22,38 +23,27 @@ module DaFace
         @end = attrs[:end]
         @hash_type = attrs[:hash_type]
         @playback_id = attrs[:playback_id]
-
-        @connector = DaFace::Api::ConnectorBuilder.new attrs.slice(:output_type, :output_params)
+        @created_at = attrs[:created_at]
+        @output_params = attrs[:output_params]
+        @output_type = attrs[:output_type]
       end
 
-      def validate
-      end
-      
-      def create_subscription
-      end
-      
-      def update_subscrition
-      end
-      
-      def pause_subscription
-      end
-      
-      def resume_subscription
-      end
-      
-      def stop_sbscription
-      end
-      
-      def delete_subscription
-      end
-      
-      def get_log
+      def generate_config
+        config = {}
+        attrs = [:name, :output_type, :initial_status, :hash, :playback_id, :start, :end]
+        attrs.each do |attr|
+          value = self.send(attr)
+          config[attr] = value if value
+        end
+        config[:output_params] = self.output_params_config
+        
+        config
       end
 
-      def list_subscriptions
+      def output_params_config
+        self.output_params
       end
 
-      
     end
   end
 end

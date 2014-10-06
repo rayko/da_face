@@ -1,6 +1,7 @@
 # Internals dependencies
 require "da_face/version"
 require "da_face/api/adapter"
+require "da_face/api/push_subscription"
 require "da_face/datasift/parser"
 require "da_face/datasift/errors"
 require "da_face/datasift/da_object"
