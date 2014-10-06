@@ -15,5 +15,6 @@ end
 RSpec.configure do |config|
   config.after :each do
     DaFace.reset_config
+    Excon.stubs.clear
   end
 end
