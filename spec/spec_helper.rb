@@ -11,3 +11,9 @@ end
 def json_fixture(file)
   JSON.parse File.read(fixture_path + '/' + file)
 end
+
+RSpec.configure do |config|
+  config.after :each do
+    DaFace.reset_config
+  end
+end
