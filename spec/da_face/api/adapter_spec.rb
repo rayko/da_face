@@ -12,12 +12,12 @@ describe DaFace::Api::Adapter do
 
   describe '#symbolize_keys' do
     before do
-      @hash = {'key1' => '1', 'key2' => {'key3' => '3'}, 'key4' => {'key5' => {'key6' => '6'}}}
+      @hash = {'key1' => '1', 'key2' => [{'key3' => '3'}, {'key7' => '7'}], 'key4' => {'key5' => {'key6' => '6'}}}
       @adapter = DaFace::Api::Adapter.new
     end
 
     it 'converts hash keys to symbols even in depth' do
-      expect(@adapter.symbolize_keys(@hash.keys, @hash)).to eq({:key1 => '1', :key2 => {:key3 => '3'}, :key4 => {:key5 => {:key6 => '6'}}})
+      expect(@adapter.symbolize_keys(@hash.keys, @hash)).to eq({:key1 => '1', :key2 => [{:key3 => '3'}, {:key7 => '7'}], :key4 => {:key5 => {:key6 => '6'}}})
     end
   end
 

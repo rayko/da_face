@@ -13,13 +13,17 @@ module DaFace
       #
       # payload is a hash that will be parsed to json and sent as body
       def post path, payload
-        true
+        response = new_connection.post :path => path, :body => payload.to_json
+        return parse_json_body(response.body)
       end
       
       # Performs a put operation
       #
       # payload is a hash that will be parsed to json and sent as body
       def put path, payload
+        response = new_connection.put :path => "#{path}", :body => payload.to_json
+        return true if response.body.empty?
+        parse_json_body(response.body)
       end
 
       # Transforms a level 1 hash to valid url params
@@ -68,6 +72,11 @@ module DaFace
         keys.each do |key|
           if hash[key].kind_of? Hash
             new_hash[key.to_sym] = symbolize_keys(hash[key].keys, hash[key])
+          elsif hash[key].kind_of? Array
+            new_hash[key.to_sym] = []
+            hash[key].each do |h|
+              new_hash[key.to_sym] << symbolize_keys(h.keys, h)
+            end
           else
             new_hash[key.to_sym] = hash[key]
           end

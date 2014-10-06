@@ -104,25 +104,25 @@ describe DaFace::Api::PushSubscription do
     end
   end
 
-  describe '#validate' do
-    before do
-      @attrs = {
-        :output_type => "http",
-        :name => "SomeName",
-        :hash => "fc79ca5fefdb54b72292db503d686257",
-        :output_params => {
-          :max_size => 2097152,
-          :delivery_frequency => 0,
-          :url => "http =>//someurl.com/someendpoint"
-        },
-        :start => 1412345259,
-        :end => 1412375259
-      }
-      @subscription = DaFace::Api::PushSubscription.new @attrs
-    end
+  # describe '#validate' do
+  #   before do
+  #     @attrs = {
+  #       :output_type => "http",
+  #       :name => "SomeName",
+  #       :hash => "fc79ca5fefdb54b72292db503d686257",
+  #       :output_params => {
+  #         :max_size => 2097152,
+  #         :delivery_frequency => 0,
+  #         :url => "http =>//someurl.com/someendpoint"
+  #       },
+  #       :start => 1412345259,
+  #       :end => 1412375259
+  #     }
+  #     @subscription = DaFace::Api::PushSubscription.new @attrs
+  #   end
     
-    it 'validates against Datasift' do
-      expect(@subscription.validate).to eq(true)
-    end
-  end
+  #   it 'validates against Datasift' do
+  #     expect(@subscription.validate).to eq(true)
+  #   end
+  # end
 end

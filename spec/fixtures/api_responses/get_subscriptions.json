@@ -1,0 +1,26 @@
+{
+  "subscriptions": [
+    {
+      "id": "ba0970fa23ee6bcbf43a0d14980320dc",
+      "output_type": "http",
+      "name": "LikeFolioPrimary",
+      "created_at": 1412345259,
+      "user_id": 28949,
+      "hash": "fc79ca5fefdb54b72292db503d686257",
+      "hash_type": "stream",
+      "output_params": {
+        "max_size": 2097152,
+        "delivery_frequency": 0,
+        "url": "http://datasift.likefolio.com/api/data_receiver"
+      },
+      "status": "active",
+      "last_request": 1412622810,
+      "last_success": 1412622796,
+      "remaining_bytes": null,
+      "lost_data": false,
+      "start": 1412345259,
+      "end": null
+    }
+  ],
+  "count": 1
+}
