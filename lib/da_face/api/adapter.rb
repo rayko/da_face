@@ -1,16 +1,15 @@
 module DaFace
   module Api
     class Adapter
+      def get path, params={}
+        response = new_connection.get :path => "#{path}#{url_params(params)}"
+        response.body
+      end
+
       def post path, payload
         true
       end
       
-      def get path, params={}
-        response = new_connection.get :path => "#{path}#{url_params(params)}"
-
-        response.body
-      end
-
       def put path, payload
       end
 
@@ -37,6 +36,25 @@ module DaFace
           :user => DaFace.configuration.user,
           :api_key => DaFace.configuration.api_key
         }
+      end
+
+      def parse_json_body body
+        parsed_body = JSON.parse(body)
+
+        return symbolize_keys(parsed_body.keys, parsed_body)
+      end
+
+      def symbolize_keys keys, hash
+        new_hash = {}
+        keys.each do |key|
+          if hash[key].kind_of? Hash
+            new_hash[key.to_sym] = symbolize_keys(hash[key].keys, hash[key])
+          else
+            new_hash[key.to_sym] = hash[key]
+          end
+        end
+
+        return new_hash
       end
       
       def default_headers
