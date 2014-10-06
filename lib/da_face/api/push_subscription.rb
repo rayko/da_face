@@ -44,6 +44,18 @@ module DaFace
         self.output_params
       end
 
+      def output_config
+        config = {}
+        config[:output_type] = self.output_type
+        config[:output_params] = self.output_params_config
+
+        config
+      end
+
+      def validate
+        DaFace::Api::Push.validate self.output_config
+      end
+
     end
   end
 end

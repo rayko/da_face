@@ -1,6 +1,8 @@
 # Internals dependencies
 require "da_face/version"
+require "da_face/configuration"
 require "da_face/api/adapter"
+require "da_face/api/push"
 require "da_face/api/push_subscription"
 require "da_face/datasift/parser"
 require "da_face/datasift/errors"
@@ -18,7 +20,22 @@ require "da_face/twitter/user"
 
 # External dependencies
 require "json"
+require "excon"
 
 module DaFace
-  # Your code goes here...
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
+  def self.reset_config
+    @configuration = Configuration.new
+  end
 end

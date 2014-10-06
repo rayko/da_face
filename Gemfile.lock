@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     da_face (0.0.1)
+      excon
       json
 
 GEM
@@ -9,6 +10,7 @@ GEM
   specs:
     coderay (1.1.0)
     diff-lcs (1.2.5)
+    excon (0.39.6)
     json (1.8.1)
     method_source (0.8.2)
     pry (0.10.1)
