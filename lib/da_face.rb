@@ -1,6 +1,7 @@
 # Internals dependencies
 require "da_face/version"
 require "da_face/configuration"
+require "da_face/utilities"
 require "da_face/api/adapter"
 require "da_face/api/adapters/base"
 require "da_face/api/adapters/excon_adapter"

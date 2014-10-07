@@ -1,6 +1,8 @@
 module DaFace
   module Api
     class Adapter
+      include DaFace::Utilities
+
       # TODO Handle headers for rate limits
       # TODO Handle status codes
 
@@ -30,38 +32,10 @@ module DaFace
         return symbolize_keys(response.keys, response)
       end
 
-
       # Creates a connection with the base path and default headers
       def connection
         DaFace.configuration.adapter_class.new
       end
-
-      # Parses a json body and sybmolizes the hash returned
-      def parse_json_body body
-        parsed_body = JSON.parse(body)
-        return symbolize_keys(parsed_body.keys, parsed_body)
-      end
-
-      # Creates a new hash with all keys as symbols, can be
-      # any level of depth
-      def symbolize_keys keys, hash
-        new_hash = {}
-        keys.each do |key|
-          if hash[key].kind_of? Hash
-            new_hash[key.to_sym] = symbolize_keys(hash[key].keys, hash[key])
-          elsif hash[key].kind_of? Array
-            new_hash[key.to_sym] = []
-            hash[key].each do |h|
-              new_hash[key.to_sym] << symbolize_keys(h.keys, h)
-            end
-          else
-            new_hash[key.to_sym] = hash[key]
-          end
-        end
-
-        return new_hash
-      end
-      
     end
   end
 end

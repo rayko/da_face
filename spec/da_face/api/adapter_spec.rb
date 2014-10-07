@@ -10,28 +10,6 @@ describe DaFace::Api::Adapter do
     end
   end
 
-  describe '#symbolize_keys' do
-    before do
-      @hash = {'key1' => '1', 'key2' => [{'key3' => '3'}, {'key7' => '7'}], 'key4' => {'key5' => {'key6' => '6'}}}
-      @adapter = DaFace::Api::Adapter.new
-    end
-
-    it 'converts hash keys to symbols even in depth' do
-      expect(@adapter.symbolize_keys(@hash.keys, @hash)).to eq({:key1 => '1', :key2 => [{:key3 => '3'}, {:key7 => '7'}], :key4 => {:key5 => {:key6 => '6'}}})
-    end
-  end
-
-  describe '#parse_json_body' do
-    before do
-      @json = {:lolcat => 'madcat'}.to_json
-      @adapter = DaFace::Api::Adapter.new
-    end
-
-    it 'parses json response' do
-      expect(@adapter.parse_json_body(@json)).to eq({:lolcat => 'madcat'})
-    end
-  end
-
   describe '#get' do
     before do
       @adapter = DaFace::Api::Adapter.new
@@ -46,4 +24,35 @@ describe DaFace::Api::Adapter do
       expect(@adapter.get('thing')).to eq({:ok => true})
     end
   end
+
+  describe '#put' do
+    before do
+      @adapter = DaFace::Api::Adapter.new
+      @excon_adapter = DaFace::Api::Adapters::ExconAdapter.new
+      @conn = Excon.new 'http://something.com/post', :mock => true
+      Excon.stub({}, {:status => 200})
+      allow(@excon_adapter).to receive(:connection).and_return(@conn)
+      allow(@adapter).to receive(:connection).and_return(@excon_adapter)
+    end
+
+    it 'performs a post' do
+      expect(@adapter.put('thing', {:something => 1})).to eq(true)
+    end
+  end
+
+  describe '#post' do
+    before do
+      @adapter = DaFace::Api::Adapter.new
+      @excon_adapter = DaFace::Api::Adapters::ExconAdapter.new
+      @conn = Excon.new 'http://something.com', :mock => true
+      Excon.stub({}, {:status => 200})
+      allow(@excon_adapter).to receive(:connection).and_return(@conn)
+      allow(@adapter).to receive(:connection).and_return(@excon_adapter)
+    end
+
+    it 'performs a put' do
+      expect(@adapter.post('thing', {:something => 1})).to eq(true)
+    end
+  end
+
 end

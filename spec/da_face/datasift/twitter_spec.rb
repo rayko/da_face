@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe DaFace::Datasift::Twitter do
+  before do
+    @parser = DaFace::Datasift::Parser.new
+  end
   describe '#new' do
     before do
-      @data = json_fixture('twitter/simple.json')
+      fixture = json_fixture('twitter/simple.json')
+      @data = @parser.symbolize_keys(fixture.keys, fixture)
     end
     
     it 'creates a Twitter object' do
@@ -14,32 +18,32 @@ describe DaFace::Datasift::Twitter do
   end
 
   describe 'attributes' do
-
-    
     context 'normal tweet' do
       before do
-        @data = json_fixture('twitter/simple.json')
+        fixture = json_fixture('twitter/simple.json')
+        @data = @parser.symbolize_keys(fixture.keys, fixture)
         @twitter = DaFace::Datasift::Twitter.new @data
       end
       it 'has tweet information' do
         expect(@twitter.tweet).not_to eq(nil)
         expect(@twitter.retweet).to eq(nil)
         expect(@twitter.retweeted).to eq(nil)
-        expect(@twitter.tweet.id).to eq(@data['id'])
+        expect(@twitter.tweet.id).to eq(@data[:id].to_i)
       end
     end
     
     context 'retweet' do
       before do
-        @data = json_fixture('twitter/retweet.json')
+        fixture = json_fixture('twitter/retweet.json')
+        @data = @parser.symbolize_keys(fixture.keys, fixture)
         @twitter = DaFace::Datasift::Twitter.new @data
       end
       it 'has tweet and retweet informacion' do
         expect(@twitter.tweet).to eq(nil)
         expect(@twitter.retweet).not_to eq(nil)
         expect(@twitter.retweeted).not_to eq(nil)
-        expect(@twitter.retweet.id).to eq(@data['retweet']['id'])
-        expect(@twitter.retweeted.id).to eq(@data['retweeted']['id'])
+        expect(@twitter.retweet.id).to eq(@data[:retweet][:id].to_i)
+        expect(@twitter.retweeted.id).to eq(@data[:retweeted][:id].to_i)
         expect(@twitter.retweet.id).not_to eq(@twitter.retweeted.id)
         expect(@twitter.retweet.retweet).to eq(true)
       end

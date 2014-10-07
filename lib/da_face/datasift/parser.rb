@@ -1,14 +1,12 @@
 module DaFace
   module Datasift
     class Parser
-      def self.hello
-        true
-      end
+      include DaFace::Utilities
 
       def build_object data
         obj = DaFace::Datasift::DaObject.new 
 
-        obj.interaction = DaFace::Datasift::Interaction.new data['interaction']
+        obj.interaction = DaFace::Datasift::Interaction.new data[:interaction]
         
         return obj
       end
@@ -17,7 +15,8 @@ module DaFace
         raise DaFace::Datasift::MissingJson unless json
         
         data = JSON.parse(json)
-        return build_object(data)
+        symbolized_data = symbolize_keys(data.keys, data)
+        return build_object(symbolized_data)
       end
     end
   end

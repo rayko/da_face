@@ -1,10 +1,10 @@
 module DaFace
   module Datasift
     class Demographic
-      attr_accessor :gender
+      attr_reader :gender
 
       def initialize data
-        self.gender = data['gender']
+        @gender = data[:gender]
       end
 
     end

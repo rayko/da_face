@@ -1,38 +1,55 @@
 module DaFace
   module Twitter
     class User
+      include DaFace::Utilities
+
       attr_reader :id, :created_at, :favourites_count, :friends_count, :geo_enabled,
                   :lang, :listed_count, :name, :profile_image_url, :profile_image_url_https,
                   :screen_name, :statuses_count, :verified
 
-      def initialize data
-        @id = data[:id]
-        @created_at = Time.parse(data[:created_at])
-        @lang = data[:lang]
-        @profile_image_url = parse_url(data[:profile_image_url])
-        @profile_image_url_https = parse_url(data[:profile_image_url_https])
 
-        @favourites_count = data[:favourites_count] || 0
-        @friends_count = data[:friends_count] || 0
-        @listed_count = data[:listed_count] || 0
+      def initialize data={}
+        self.allowed_attributes.each do |attr|
+          unless data[attr].nil?
+            self.instance_variable_set("@#{attr}", data[attr])
+          end
+        end
+        self.normalize_attributes!
+        return self
+      end
 
-        @geo_enabled = data[:geo_enabled]
-        @name = data[:name]
-        @screen_name = data[:screen_name]
-        @statuses_count = data[:statuses_count]
-        @verified = data[:verified]
+      def allowed_attributes
+        [:id, :created_at, :favourites_count, :friends_count, :geo_enabled,
+         :lang, :listed_count, :name, :profile_image_url, :profile_image_url_https,
+         :screen_name, :statuses_count, :verified]
+      end
+
+      def normalize_attributes!
+        @created_at = parse_timestamp(@created_at) if @created_at
+        @profile_image_url = parse_uri(@profile_image_url) if @profile_image_url
+        @profile_image_url_https = parse_uri(@profile_image_url_https) if @profile_image_url_https
+      end
+      
+      def favourites_count
+        @favourites_count || 0
+      end
+
+      def favorites_count
+        favourites_count
+      end
+
+      def friends_count
+        @friends_count || 0
+      end
+
+      def listed_count
+        @listed_count
       end
 
       def id_str
         @id.to_s
       end
 
-      private
-      def parse_url link
-        if link
-          URI(link)
-        end
-      end
     end
   end
 end

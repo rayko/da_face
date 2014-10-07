@@ -1,6 +1,8 @@
 module DaFace
   module Api
     class PushSubscription
+      include DaFace::Utilities
+
       attr_accessor :name, :hash, :initial_status, :start, :end,
                     :output_params, :output_type, :playback_id
 
@@ -60,13 +62,6 @@ module DaFace
 
       def validate
         DaFace::Api::Push.validate self.output_config
-      end
-
-      def parse_timestamp timestamp
-        return nil unless timestamp
-        return Time.at(timestamp) if timestamp.kind_of? Fixnum
-        return Time.parse(timestamp) if timestamp.kind_of? String
-        return timestamp
       end
 
     end

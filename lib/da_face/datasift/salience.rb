@@ -1,14 +1,14 @@
 module DaFace
   module Datasift
     class Salience
-      attr_accessor :content
+      attr_reader :content
 
       def initialize data
-        self.content = data['content']
+        @content = data[:content]
       end
 
       def sentiment
-        self.content['sentiment']
+        self.content[:sentiment]
       end
 
     end

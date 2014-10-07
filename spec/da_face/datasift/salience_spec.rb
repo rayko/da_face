@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe DaFace::Datasift::Salience do
+  before do
+    @parser = DaFace::Datasift::Parser.new
+    fixture = json_fixture('salience/simple.json')
+    @data = @parser.symbolize_keys(fixture.keys, fixture)
+  end
+  
   describe '#new' do
-    before do
-      @data = json_fixture('salience/simple.json')
-    end
     
     it 'creates Salience object' do
       obj = DaFace::Datasift::Salience.new @data
@@ -15,16 +18,15 @@ describe DaFace::Datasift::Salience do
 
   describe 'attributes' do
     before do
-      @data = json_fixture('salience/simple.json')
       @salience = DaFace::Datasift::Salience.new @data
     end
     
     it 'has all required attributes' do
-      expect(@salience.content).to eq(@data['content'])
+      expect(@salience.content).to eq(@data[:content])
     end
 
     it 'returns sentiment value' do
-      expect(@salience.sentiment).to eq(@data['content']['sentiment'])
+      expect(@salience.sentiment).to eq(@data[:content][:sentiment])
     end
   end
 

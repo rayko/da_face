@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe DaFace::Datasift::DaObject do
-  describe '#new' do
-    before do
-      @interaction_data = json_fixture('interactions/simple.json')
-    end
+  before do
+    @parser = DaFace::Datasift::Parser.new
+    fixture = json_fixture('interactions/simple.json')
+    @interaction_data = @parser.symbolize_keys(fixture.keys, fixture)
+  end
 
+  describe '#new' do
     it 'creates a DaObject object' do
       obj = DaFace::Datasift::DaObject.new @interaction_data
 
@@ -15,7 +17,6 @@ describe DaFace::Datasift::DaObject do
 
   describe 'attributes' do
     before do 
-      @interaction_data = json_fixture('interactions/simple.json')
       @da_object = DaFace::Datasift::DaObject.new @interaction_data
     end
 

@@ -1,33 +1,71 @@
 require 'spec_helper'
 
 describe DaFace::Twitter::Tweet do
-  describe '#new' do
-    before do
-      @tweet = DaFace::Twitter::Parser.attributes_for_tweet(json_fixture('twitter/simple.json'))
-    end
+  before do
+    @parser = DaFace::Datasift::Parser.new
+    fixture = json_fixture('twitter/simple.json')
+    @data = @parser.symbolize_keys(fixture.keys, fixture)
+  end
 
+  describe '#new' do
     it 'creates a Tweet object' do
-      obj = DaFace::Twitter::Tweet.new @tweet
+      obj = DaFace::Twitter::Tweet.new @data
     end
   end
   
   describe 'attributes' do
     before do 
-      @data = DaFace::Twitter::Parser.attributes_for_tweet(json_fixture('twitter/simple.json')).merge(:retweet => false)
       @tweet = DaFace::Twitter::Tweet.new @data
     end
     
-    it 'has all required attributes' do
-      expect(@tweet.id).to eq(@data[:id])
-      expect(@tweet.created_at.class).to eq(Time)
-      expect(@tweet.created_at).to eq(Time.parse(@data[:created_at]))
-      expect(@tweet.lang).to eq(@data[:lang])
-      expect(@tweet.text).to eq(@data[:text])
-      expect(@tweet.source).to eq(@data[:source])
-      expect(@tweet.links.class).to eq(Array)
-      expect(@tweet.links.first).to eq(URI(@data[:links].first))
-      expect(@tweet.retweet?).to eq(false)
-      expect(@tweet.retweet_count).to eq(0)
+    describe '#id' do
+      it 'is present' do
+        expect(@tweet.id).to eq(@data[:id].to_i)
+      end
+    end
+
+    describe '#created_at' do
+      it 'is present' do
+        expect(@tweet.created_at.class).to eq(Time)
+        expect(@tweet.created_at).to eq(Time.parse(@data[:created_at]))
+      end
+    end
+
+    describe '#lang' do
+      it 'is present' do
+        expect(@tweet.lang).to eq(@data[:lang])
+      end
+    end
+
+    describe '#text' do
+      it 'is present' do
+        expect(@tweet.text).to eq(@data[:text])
+      end
+    end
+    
+    describe '#source' do
+      it 'is present' do
+        expect(@tweet.source).to eq(@data[:source])
+      end
+    end
+    
+    describe '#links' do
+      it 'is present' do
+        expect(@tweet.links.class).to eq(Array)
+        expect(@tweet.links.first).to eq(URI(@data[:links].first))
+      end
+    end
+
+    describe '#retweet?' do
+      it 'is present' do
+        expect(@tweet.retweet?).to eq(false)
+      end
+    end
+    
+    describe '#retweet_count' do
+      it 'is present' do
+        expect(@tweet.retweet_count).to eq(0)
+      end
     end
   end
 end

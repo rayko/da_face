@@ -1,27 +1,31 @@
 module DaFace
   module Datasift
     class Interaction
-      attr_accessor :author, :content, :created_at, :id, :link, 
-                    :received_at, :schema, :source, :type, :tags,
-                    :tag_tree
+      include DaFace::Utilities
+
+      attr_reader :author, :content, :created_at, :id, :link, 
+                  :received_at, :schema, :source, :type, :tags,
+                  :tag_tree
 
       def initialize data
-        self.author = data['author']
-        self.content = data['content']
-        self.created_at = parsed_datetime(data['created_at'])
-        self.id = data['id']
-        self.link = data['link']
-        self.received_at = parsed_datetime(data['received_at'])
-        self.schema = data['schema']
-        self.source = data['source']
-        self.type = data['type']
-        self.tags = data['tags']
-        self.tag_tree = data['tag_tree']
+        allowed_attributes.each do |attr|
+          unless data[attr].nil?
+            self.instance_variable_set("@#{attr}".to_sym, data[attr])
+          end
+        end
+        normalize_attributes!
+        return self
       end
 
-      private
-      def parsed_datetime datetime
-        datetime.kind_of?(String) ? Time.parse(datetime) : Time.at(datetime)
+      def allowed_attributes
+        [:author, :content, :created_at, :id, :link, 
+         :received_at, :schema, :source, :type, :tags,
+         :tag_tree]
+      end
+
+      def normalize_attributes!
+        @created_at = parse_timestamp(@created_at) if @created_at
+        @received_at = parse_timestamp(@received_at) if @received_at
       end
 
     end
