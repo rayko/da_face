@@ -8,24 +8,24 @@ module DaFace
                   :last_success, :remaining_bytes, :lost_data
 
       def initialize attrs
-        @id = attrs[:id]
-        @user_id = attrs[:user_id]
-        @hash_type = attrs[:hash_type]
-        @status = attrs[:status]
-        @last_request = parse_timestamp(attrs[:last_request])
-        @last_success = parse_timestamp(attrs[:last_success])
+        @id              = attrs[:id]
+        @user_id         = attrs[:user_id]
+        @hash_type       = attrs[:hash_type]
+        @status          = attrs[:status]
+        @last_request    = parse_timestamp(attrs[:last_request])
+        @last_success    = parse_timestamp(attrs[:last_success])
         @remaining_bytes = attrs[:remaining_bytes]
-        @lost_data = attrs[:lost_data]
-        @name = attrs[:name]
-        @hash = attrs[:hash]
-        @initial_status = attrs[:initial_status]
-        @start = parse_timestamp(attrs[:start])
-        @end = parse_timestamp(attrs[:end])
-        @hash_type = attrs[:hash_type]
-        @playback_id = attrs[:playback_id]
-        @created_at = parse_timestamp(attrs[:created_at])
-        @output_params = attrs[:output_params]
-        @output_type = attrs[:output_type]
+        @lost_data       = attrs[:lost_data]
+        @name            = attrs[:name]
+        @hash            = attrs[:hash]
+        @initial_status  = attrs[:initial_status]
+        @start           = parse_timestamp(attrs[:start])
+        @end             = parse_timestamp(attrs[:end])
+        @hash_type       = attrs[:hash_type]
+        @playback_id     = attrs[:playback_id]
+        @created_at      = parse_timestamp(attrs[:created_at])
+        @output_params   = attrs[:output_params]
+        @output_type     = attrs[:output_type]
       end
 
       def generate_config
@@ -48,21 +48,6 @@ module DaFace
 
       def output_params_config
         self.output_params
-      end
-
-      def created_at
-        return Time.parse(@created_at) if @created_at.kind_of? Fixnum
-        return @created_at
-      end
-
-      def start
-        return Time.parse(@start) if @start.kind_of? Fixnum
-        return @start
-      end
-
-      def end
-        return Time.parse(@end) if @end.kind_of? Fixnum
-        return @end
       end
 
       def output_config

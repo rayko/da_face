@@ -4,25 +4,25 @@ describe DaFace::Api::PushSubscription do
   describe '#new' do
     before do
       @attrs = {
-        :id => "ba0970fa23ee6bcbf43a0d14980320dc",
-        :output_type => :http,
-        :name => "LikeFolioPrimary",
+        :id => "k3j452kl3j4h5kl23j45h2l34kjh5345",
+        :output_type => "http",
+        :name => "SomeName",
         :created_at => 1412345259,
         :user_id => 28949,
-        :hash => "fc79ca5fefdb54b72292db503d686257",
+        :hash => "1m2n3bm12n3b1n23bm1n2b3mn12b3m2n",
         :hash_type => "stream",
         :output_params => {
           :max_size => 2097152,
           :delivery_frequency => 0,
-          :url => "http =>//datasift.likefolio.com/api/data_receiver"
+          :url => "http =>//somewhere.com/data_receiver"
         },
         :status => "active",
         :last_request => 1412597788,
         :last_success => 1412597789,
-        :remaining_bytes => nil,
+        :remaining_bytes => 100,
         :lost_data => false,
         :start => 1412345259,
-        :end => nil
+        :end => 1412347259
       }
     end
     
@@ -36,17 +36,17 @@ describe DaFace::Api::PushSubscription do
   describe 'attributes' do
     before do
       @attrs = {
-        :id => "ba0970fa23ee6bcbf43a0d14980320dc",
+        :id => "k3j452kl3j4h5kl23j45h2l34kjh5345",
         :output_type => "http",
-        :name => "LikeFolioPrimary",
+        :name => "SomeName",
         :created_at => 1412345259,
         :user_id => 28949,
-        :hash => "fc79ca5fefdb54b72292db503d686257",
+        :hash => "1m2n3bm12n3b1n23bm1n2b3mn12b3m2n",
         :hash_type => "stream",
         :output_params => {
           :max_size => 2097152,
           :delivery_frequency => 0,
-          :url => "http =>//datasift.likefolio.com/api/data_receiver"
+          :url => "http =>//somewhere.com/data_receiver"
         },
         :status => "active",
         :last_request => 1412597788,
@@ -70,7 +70,6 @@ describe DaFace::Api::PushSubscription do
         expect(@subscription.name).to eq(@attrs[:name])
       end
     end
-
 
     describe '#created_at' do
       it 'is present' do
@@ -156,7 +155,7 @@ describe DaFace::Api::PushSubscription do
       @attrs = {
         :output_type => "http",
         :name => "SomeName",
-        :hash => "fc79ca5fefdb54b72292db503d686257",
+        :hash => "l3k4j23k4jl23j42l3k4j2l3kj4k3j4l",
         :output_params => {
           :max_size => 2097152,
           :delivery_frequency => 0,
