@@ -1,18 +1,19 @@
 module DaFace
   module Datasift
     class Links < Array
-      def initialize data
+      def initialize data={}
         self.class.get_elements(data).each do |e|
           self << DaFace::Datasift::Link.new(e)
         end
       end
 
-      def self.get_elements data
+      def self.get_elements data={}
         hashed_links = []
-        data.values.first.size.times do |index|
-          hashed_links << get_values(index - 1, data.keys, data)
+        unless data.empty?
+          data.values.first.size.times do |index|
+            hashed_links << get_values(index - 1, data.keys, data)
+          end
         end
-
         return hashed_links
       end
 

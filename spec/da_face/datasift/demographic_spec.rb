@@ -11,6 +11,10 @@ describe DaFace::Datasift::Demographic do
 
       expect(obj.class).to eq(DaFace::Datasift::Demographic)
     end
+
+    it 'creates empty Demographic' do
+      expect(Proc.new{DaFace::Datasift::Demographic.new}).not_to raise_error
+    end
   end
 
   describe 'attributes' do

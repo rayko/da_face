@@ -14,6 +14,10 @@ describe DaFace::Datasift::Links do
         expect(o.class).to eq(DaFace::Datasift::Link)
       end
     end
+
+    it 'cereates empty Links' do
+      expect(Proc.new{DaFace::Datasift::Links.new}).not_to raise_error
+    end
   end
 
   describe '#get_values' do

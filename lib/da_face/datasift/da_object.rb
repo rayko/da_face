@@ -3,14 +3,23 @@ module DaFace
     class DaObject
       attr_reader :interaction, :demographic, :links, :twitter, :salience, :language
 
-      def initialize data
-        @interaction = DaFace::Datasift::Interaction.new data[:interaction]
-        @demographic = DaFace::Datasift::Demographic.new data[:demographic]
-        @links = DaFace::Datasift::Links.new data[:links]
-        @twitter = DaFace::Datasift::Twitter.new data[:twitter]
-        @salience = DaFace::Datasift::Salience.new data[:salience]
-        @language = DaFace::Datasift::Language.new data[:language]
+      def initialize data={}
+        allowed_attributes.each do |attr|
+          unless data[attr].nil?
+            self.instance_variable_set("@#{attr}".to_sym, data[attr])
+          end
+        end
+        normalize_attributes!
+        return self
       end
+
+      def normalize_attributes!
+      end
+
+      def allowed_attributes
+        [:interaction, :demographic, :links, :twitter, :salience, :language]
+      end
+
     end
   end
 end

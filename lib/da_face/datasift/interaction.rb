@@ -7,7 +7,7 @@ module DaFace
                   :received_at, :schema, :source, :type, :tags,
                   :tag_tree
 
-      def initialize data
+      def initialize data={}
         allowed_attributes.each do |attr|
           unless data[attr].nil?
             self.instance_variable_set("@#{attr}".to_sym, data[attr])

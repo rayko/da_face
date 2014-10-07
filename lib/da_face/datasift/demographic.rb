@@ -3,7 +3,7 @@ module DaFace
     class Demographic
       attr_reader :gender
 
-      def initialize data
+      def initialize data={}
         @gender = data[:gender]
       end
 

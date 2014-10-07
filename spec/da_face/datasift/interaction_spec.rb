@@ -12,6 +12,10 @@ describe DaFace::Datasift::Interaction do
       
       expect(obj.class).to eq(DaFace::Datasift::Interaction)
     end
+
+    it 'creates empty Interaction' do
+      expect(Proc.new{DaFace::Datasift::Interaction.new}).not_to raise_error
+    end
   end
 
   describe 'attributes' do
