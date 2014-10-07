@@ -12,36 +12,57 @@ module DaFace
         @user_id = attrs[:user_id]
         @hash_type = attrs[:hash_type]
         @status = attrs[:status]
-        @last_request = attrs[:last_request]
-        @last_success = attrs[:last_success]
+        @last_request = parse_timestamp(attrs[:last_request])
+        @last_success = parse_timestamp(attrs[:last_success])
         @remaining_bytes = attrs[:remaining_bytes]
         @lost_data = attrs[:lost_data]
         @name = attrs[:name]
         @hash = attrs[:hash]
         @initial_status = attrs[:initial_status]
-        @start = attrs[:start]
-        @end = attrs[:end]
+        @start = parse_timestamp(attrs[:start])
+        @end = parse_timestamp(attrs[:end])
         @hash_type = attrs[:hash_type]
         @playback_id = attrs[:playback_id]
-        @created_at = attrs[:created_at]
+        @created_at = parse_timestamp(attrs[:created_at])
         @output_params = attrs[:output_params]
         @output_type = attrs[:output_type]
       end
 
       def generate_config
         config = {}
-        attrs = [:name, :output_type, :initial_status, :hash, :playback_id, :start, :end]
-        attrs.each do |attr|
-          value = self.send(attr)
-          config[attr] = value if value
-        end
-        config[:output_params] = self.output_params_config
-        
+        config[:name]           = self.name if self.name
+        config[:output_type]    = self.output_type if self.output_type
+        config[:initial_status] = self.initial_status if self.initial_status
+        config[:hash]           = self.hash if self.hash
+        config[:playback_id]    = self.playback_id if self.playback_id
+        config[:start]          = self.start.to_i if self.start
+        config[:end]            = self.end.to_i if self.end
+        config[:output_params]  = self.output_params_config if self.output_params
+
         config
+      end
+
+      def lost_data?
+        self.lost_data
       end
 
       def output_params_config
         self.output_params
+      end
+
+      def created_at
+        return Time.parse(@created_at) if @created_at.kind_of? Fixnum
+        return @created_at
+      end
+
+      def start
+        return Time.parse(@start) if @start.kind_of? Fixnum
+        return @start
+      end
+
+      def end
+        return Time.parse(@end) if @end.kind_of? Fixnum
+        return @end
       end
 
       def output_config
@@ -54,6 +75,13 @@ module DaFace
 
       def validate
         DaFace::Api::Push.validate self.output_config
+      end
+
+      def parse_timestamp timestamp
+        return nil unless timestamp
+        return Time.at(timestamp) if timestamp.kind_of? Fixnum
+        return Time.parse(timestamp) if timestamp.kind_of? String
+        return timestamp
       end
 
     end

@@ -51,30 +51,103 @@ describe DaFace::Api::PushSubscription do
         :status => "active",
         :last_request => 1412597788,
         :last_success => 1412597789,
-        :remaining_bytes => nil,
+        :remaining_bytes => 100,
         :lost_data => false,
         :start => 1412345259,
-        :end => nil
+        :end => 1412347259
       }
       @subscription = DaFace::Api::PushSubscription.new @attrs
     end
 
-    it 'has required params' do
-      expect(@subscription.id).to eq(@attrs[:id])
-      expect(@subscription.name).to eq(@attrs[:name])
-      expect(@subscription.created_at).to eq(@attrs[:created_at])
-      expect(@subscription.user_id).to eq(@attrs[:user_id])
-      expect(@subscription.hash).to eq(@attrs[:hash])
-      expect(@subscription.hash_type).to eq(@attrs[:hash_type])
-      expect(@subscription.status).to eq(@attrs[:status])
-      expect(@subscription.last_request).to eq(@attrs[:last_request])
-      expect(@subscription.last_success).to eq(@attrs[:last_success])
-      expect(@subscription.remaining_bytes).to eq(@attrs[:remaining_bytes])
-      expect(@subscription.lost_data).to eq(@attrs[:lost_data])
-      expect(@subscription.start).to eq(@attrs[:start])
-      expect(@subscription.end).to eq(@attrs[:end])
-      expect(@subscription.output_type).to eq(@attrs[:output_type])
-      expect(@subscription.output_params).to eq(@attrs[:output_params])
+    describe '#id' do
+      it 'is present' do
+        expect(@subscription.id).to eq(@attrs[:id])
+      end
+    end
+
+    describe '#name' do
+      it 'is present' do
+        expect(@subscription.name).to eq(@attrs[:name])
+      end
+    end
+
+
+    describe '#created_at' do
+      it 'is present' do
+        expect(@subscription.created_at).to eq(Time.at(@attrs[:created_at]))
+      end
+    end
+
+    describe '#user_id' do
+      it 'is present' do
+        expect(@subscription.hash).to eq(@attrs[:hash])
+      end
+    end
+
+    describe '#hash_type' do
+      it 'is present' do
+        expect(@subscription.hash_type).to eq(@attrs[:hash_type])
+      end
+    end
+
+    describe '#status' do
+      it 'is present' do
+        expect(@subscription.status).to eq(@attrs[:status])
+      end
+    end
+
+    describe '#last_request' do
+      it 'is present' do
+        expect(@subscription.last_request).to eq(Time.at(@attrs[:last_request]))
+      end
+    end
+
+    describe '#last_success' do
+      it 'is present' do
+        expect(@subscription.last_success).to eq(Time.at(@attrs[:last_success]))
+      end
+    end
+
+    describe '#remaining_bytes' do
+      it 'is present' do
+        expect(@subscription.remaining_bytes).to eq(@attrs[:remaining_bytes])
+      end
+    end
+
+    describe '#lost_data' do
+      it 'is present' do
+        expect(@subscription.lost_data).to eq(@attrs[:lost_data])
+      end
+    end
+
+    describe '#lost_data?' do
+      it 'returns same as #lost_data' do
+        expect(@subscription.lost_data?).to eq(@subscription.lost_data)
+      end
+    end
+
+    describe '#start' do
+      it 'is present' do
+        expect(@subscription.start).to eq(Time.at(@attrs[:start]))
+      end
+    end
+
+    describe '#end' do
+      it 'is present' do
+        expect(@subscription.end).to eq(Time.at(@attrs[:end]))
+      end
+    end
+
+    describe '#output_type' do
+      it 'is present' do
+        expect(@subscription.output_type).to eq(@attrs[:output_type])
+      end
+    end
+
+    describe '#output_params' do
+      it 'is present' do
+        expect(@subscription.output_params).to eq(@attrs[:output_params])
+      end
     end
   end
 
