@@ -36,14 +36,14 @@ Configuration:
       config.adapter_class = 'DaFace::Api::Adapters::ExconAdapter'
     end
 
-This all you can configure for DaFace. The required configurations are user and api_key, you can leave the rest. because it has default values for those.
+This is all you can configure for DaFace. The required configurations are user and api_key, you can leave the rest because it has default values for those.
 
 Configuration Details:
 
 - config.user: username in Datasift to construct the Authorization header.
 - config.api_key: the api key hash given to get acess to their API.
 - config.api_host: the base host of where the API is, it defaults to http://api.datasift.com
-- config.api_path_prefix: a prefix to pre-pend to outgoing requests, for now it's used to set API version.
+- config.api_path_prefix: a prefix to pre-pend to outgoing requests, for now it's used to set API version. It defauls to '/v1'.
 - config.adapter_class: tells DaFace which adapter to use. It defauls to Daface::Api::Adapters::ExconAdapter, and it's the only one available for now. You can write your own adapter for RestClient, or any other HTTP interface.
 
 
@@ -54,8 +54,7 @@ You can create a subscription with:
 
     subscription = Daface::Api::PushSubscription.new :name => 'Test', :output_params => {:auth => {:type => 'none'}, :url => 'http://somewhere.com', :delivery_frequency => 10}
 
-That will send the request, create the subscription, and update the subscription object from the data the API returned.
-You can then do other stuff with the subscriptiono:
+You can then do other stuff with the subscription:
 
     subscription.validate # performs a validation of the output params
     subscription.create   # creates the subscription
@@ -67,7 +66,7 @@ You can then do other stuff with the subscriptiono:
 
 You can for example get a list of subscriptions:
 
-    DaFace::Api::Pushsubscription.get_all
+    DaFace::Api::PushSubscription.get_all
 
 And then perform any needed operation from the Array you get. All objects inside will be DaFace::Api::PushSubscription objects.
 
