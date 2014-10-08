@@ -86,6 +86,12 @@ module DaFace
         config
       end
 
+      def update 
+        params = {'id' => self.id, 'name' => self.name}.merge(self.output_config)
+        data = DaFace::Api::Push.update params
+        update! data
+      end
+
       def validate
         DaFace::Api::Push.validate self.output_config
       end

@@ -17,8 +17,8 @@ module DaFace
         return response
       end
       
-      def self.update subscription_id
-        response = connection.put 'push/update', {:id => subscription_id}
+      def self.update subscription
+        response = connection.put 'push/update', subscription
         raise_push_error_if_error response
         return response
       end
