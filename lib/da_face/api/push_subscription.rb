@@ -124,6 +124,12 @@ module DaFace
         update! data
       end
 
+      def self.get_all
+        data = DaFace::Api::Push.get
+        return data if data.keys.include? :error
+        data[:subscriptions].collect{|d| new(d)}
+      end
+
     end
   end
 end
