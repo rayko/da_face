@@ -10,6 +10,16 @@ describe DaFace::Api::Adapters::Base do
     end
   end
 
+  it 'throws error if user is missing' do
+    DaFace.configuration.user = nil
+    expect(Proc.new{DaFace::Api::Adapters::Base.new}).to raise_error(DaFace::AdapterError)
+  end
+
+  it 'throws error if api_key is missing' do
+    DaFace.configuration.api_key = nil
+    expect(Proc.new{DaFace::Api::Adapters::Base.new}).to raise_error(DaFace::AdapterError)
+  end
+
   describe '#default_headers' do
     before do
       @adapter = DaFace::Api::Adapters::Base.new

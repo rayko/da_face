@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe DaFace::Api::PushLog do
   before do
+    DaFace.configure do |config|
+      config.user = 'someone'
+      config.api_key = 'something'
+    end
+
     fixture = json_fixture('api_responses/log.json')
     # TODO Make this tool preetier (symbolize)
     @log_data = DaFace::Api::Adapter.new.symbolize_keys(fixture.keys, fixture)

@@ -9,6 +9,9 @@ module DaFace
           @path_prefix = DaFace.configuration.api_path_prefix
           @user = DaFace.configuration.user
           @api_key = DaFace.configuration.api_key
+
+          raise DaFace::AdapterError.new('Missing user for authentication') unless @user
+          raise DaFace::AdapterError.new('Missing api_key for authentication') unless @api_key
         end
 
         # Constructs default headers for operations
