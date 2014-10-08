@@ -18,7 +18,21 @@ describe DaFace::Api::Adapters::Base do
     it 'constructs default header hash' do
       headers = @adapter.default_headers
 
-      expect(headers.keys).to eq([:authorization, :content_type, :accept])
+      expect(headers.keys).to eq(['Authorization', 'Accept'])
+      expect(headers.values.compact.size).not_to eq(0)
+    end
+
+    it 'constructs post header hash' do
+      headers = @adapter.post_headers
+
+      expect(headers.keys).to eq(['Authorization', 'Accept', 'Content-Type'])
+      expect(headers.values.compact.size).not_to eq(0)
+    end
+
+    it 'constructs get header hash' do
+      headers = @adapter.get_headers
+
+      expect(headers.keys).to eq(['Authorization', 'Accept'])
       expect(headers.values.compact.size).not_to eq(0)
     end
   end

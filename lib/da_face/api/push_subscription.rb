@@ -36,15 +36,15 @@ module DaFace
 
       def generate_config
         config = {}
-        config[:name]           = self.name if self.name
-        config[:output_type]    = self.output_type if self.output_type
-        config[:initial_status] = self.initial_status if self.initial_status
-        config[:hash]           = self.hash if self.hash
-        config[:playback_id]    = self.playback_id if self.playback_id
-        config[:start]          = self.start.to_i if self.start
-        config[:end]            = self.end.to_i if self.end
-        config[:output_params]  = self.output_params_config if self.output_params
+        config['name']           = self.name if self.name
+        config['output_type']    = self.output_type if self.output_type
+        config['initial_status'] = self.initial_status if self.initial_status
+        config['hash']           = self.hash if self.hash
+        config['playback_id']    = self.playback_id if self.playback_id
+        config['start']          = self.start.to_i if self.start
+        config['end']            = self.end.to_i if self.end
 
+        config.merge! self.output_params_config if self.output_params
         config
       end
 
@@ -53,19 +53,53 @@ module DaFace
       end
 
       def output_params_config
-        self.output_params
+        params = self.output_params.clone
+        auth = params.delete :auth
+        config = {}
+        params.each do |key, value|
+          config["output_params.#{key}"] = value
+        end
+        auth.each do |key, value|
+          config["output_params.auth.#{key}"] = value
+        end unless auth.nil?
+
+        config
       end
 
       def output_config
         config = {}
-        config[:output_type] = self.output_type
-        config[:output_params] = self.output_params_config
+        config['output_type'] = self.output_type
+        config.merge! self.output_params_config
 
         config
       end
 
       def validate
         DaFace::Api::Push.validate self.output_config
+      end
+
+      def create
+        DaFace::Api::Push.create self.generate_config
+      end
+      
+      def pause
+        DaFace::Api::Push.pause self.id
+      end
+      
+      def resume
+        DaFace::Api::Push.resume self.id
+      end
+
+      def stop
+        DaFace::Api::Push.stop self.id
+      end
+      
+      def delete
+        DaFace::Api::Push.delete self.id
+      end
+
+      def log
+        DaFace::Api::Push.log self.id
       end
 
     end

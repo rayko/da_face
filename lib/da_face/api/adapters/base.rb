@@ -14,10 +14,21 @@ module DaFace
         # Constructs default headers for operations
         def default_headers
           {
-            :authorization => api_auth_header,
-            :content_type => :json,
-            :accept => :json
+            'Authorization' => api_auth_header,
+            'Accept' => 'application/json'
           }
+        end
+
+        def get_headers
+          default_headers
+        end
+
+        def post_headers
+          default_headers.merge({'Content-Type' => 'application/x-www-form-urlencoded'})
+        end
+
+        def encode_form payload
+          URI.encode_www_form(payload)
         end
 
         # Constructs the base api path for Datasift

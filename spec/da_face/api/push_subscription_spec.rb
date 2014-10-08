@@ -140,6 +140,9 @@ describe DaFace::Api::PushSubscription do
         :name => "SomeName",
         :hash => "l3k4j23k4jl23j42l3k4j2l3kj4k3j4l",
         :output_params => {
+          :auth => {
+            :type => 'none'
+          },
           :max_size => 2097152,
           :delivery_frequency => 0,
           :url => "http =>//someurl.com/someendpoint"
@@ -147,16 +150,50 @@ describe DaFace::Api::PushSubscription do
         :start => 1412345259,
         :end => 1412375259
       }
+
+      @config = {
+        'output_type' => 'http',
+        'name' => 'SomeName',
+        'hash' => 'l3k4j23k4jl23j42l3k4j2l3kj4k3j4l',
+        'start' => 1412345259,
+        'end' => 1412375259,
+        'output_params.max_size' => 2097152,
+        'output_params.delivery_frequency' => 0,
+        'output_params.url' => "http =>//someurl.com/someendpoint",
+        'output_params.auth.type' => 'none'
+      }
+
+      @output_params_config = {
+        'output_params.max_size' => 2097152,
+        'output_params.delivery_frequency' => 0,
+        'output_params.url' => "http =>//someurl.com/someendpoint",
+        'output_params.auth.type' => 'none'
+      }
+
+      @output_config = {
+        'output_type' => 'http',
+        'output_params.max_size' => 2097152,
+        'output_params.delivery_frequency' => 0,
+        'output_params.url' => "http =>//someurl.com/someendpoint",
+        'output_params.auth.type' => 'none'
+      }
+
+
       @subscription = DaFace::Api::PushSubscription.new @attrs
     end
 
     it 'generates config' do
-      expect(@subscription.generate_config).to eq(@attrs)
+      expect(@subscription.generate_config).to eq(@config)
     end
 
     it 'generates output_params config' do
-      expect(@subscription.output_params_config).to eq(@attrs[:output_params])
+      expect(@subscription.output_params_config).to eq(@output_params_config)
     end
+
+    it 'generates output_config config' do
+      expect(@subscription.output_config).to eq(@output_config)
+    end
+
   end
 
   # describe '#validate' do
