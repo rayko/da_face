@@ -1,61 +1,44 @@
 require 'spec_helper'
 
 describe DaFace::Api::PushSubscription do
+  before do
+    @attrs = {
+      :id => "k3j452kl3j4h5kl23j45h2l34kjh5345",
+      :output_type => "http",
+      :name => "SomeName",
+      :created_at => 1412345259,
+      :user_id => 28949,
+      :hash => "1m2n3bm12n3b1n23bm1n2b3mn12b3m2n",
+      :hash_type => "stream",
+      :output_params => {
+        :max_size => 2097152,
+        :delivery_frequency => 0,
+        :url => "http =>//somewhere.com/data_receiver"
+      },
+      :status => "active",
+      :last_request => 1412597788,
+      :last_success => 1412597789,
+      :remaining_bytes => 100,
+      :lost_data => false,
+      :start => 1412345259,
+      :end => 1412347259
+    }
+  end
+
   describe '#new' do
-    before do
-      @attrs = {
-        :id => "k3j452kl3j4h5kl23j45h2l34kjh5345",
-        :output_type => "http",
-        :name => "SomeName",
-        :created_at => 1412345259,
-        :user_id => 28949,
-        :hash => "1m2n3bm12n3b1n23bm1n2b3mn12b3m2n",
-        :hash_type => "stream",
-        :output_params => {
-          :max_size => 2097152,
-          :delivery_frequency => 0,
-          :url => "http =>//somewhere.com/data_receiver"
-        },
-        :status => "active",
-        :last_request => 1412597788,
-        :last_success => 1412597789,
-        :remaining_bytes => 100,
-        :lost_data => false,
-        :start => 1412345259,
-        :end => 1412347259
-      }
-    end
-    
     it 'creates a PushSubscription object' do
       obj = DaFace::Api::PushSubscription.new @attrs
 
       expect(obj.class).to eq(DaFace::Api::PushSubscription)
     end
+    
+    it 'creates enpty Pushsubscription' do
+      expect(Proc.new{DaFace::Api::PushSubscription.new}).not_to raise_error
+    end
   end
 
   describe 'attributes' do
     before do
-      @attrs = {
-        :id => "k3j452kl3j4h5kl23j45h2l34kjh5345",
-        :output_type => "http",
-        :name => "SomeName",
-        :created_at => 1412345259,
-        :user_id => 28949,
-        :hash => "1m2n3bm12n3b1n23bm1n2b3mn12b3m2n",
-        :hash_type => "stream",
-        :output_params => {
-          :max_size => 2097152,
-          :delivery_frequency => 0,
-          :url => "http =>//somewhere.com/data_receiver"
-        },
-        :status => "active",
-        :last_request => 1412597788,
-        :last_success => 1412597789,
-        :remaining_bytes => 100,
-        :lost_data => false,
-        :start => 1412345259,
-        :end => 1412347259
-      }
       @subscription = DaFace::Api::PushSubscription.new @attrs
     end
 

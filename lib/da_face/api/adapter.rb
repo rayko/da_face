@@ -3,6 +3,12 @@ module DaFace
     class Adapter
       include DaFace::Utilities
 
+      attr_reader :connection
+
+      def initialize adapter_class = DaFace.configuration.adapter_class
+        @connection = adapter_class.new
+      end
+
       # TODO Handle headers for rate limits
       # TODO Handle status codes
 
@@ -30,11 +36,6 @@ module DaFace
         response = connection.put path, payload
         return true if response.empty?
         return symbolize_keys(response.keys, response)
-      end
-
-      # Creates a connection with the base path and default headers
-      def connection
-        DaFace.configuration.adapter_class.new
       end
     end
   end

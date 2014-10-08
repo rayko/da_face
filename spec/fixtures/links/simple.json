@@ -7,7 +7,7 @@
   ],
   "hops": [
     [
-      "http://klou.tt/pniry0c9pb79"
+      "http://lolcat.com"
     ]
   ],
   "meta": {
@@ -18,7 +18,7 @@
       "text/html"
     ],
     "description": [
-      "Hulu has nabbed marketing veteran Jenny Wall from rival Netflix. She joins the online streamer as svp and head of marketing and will oversee Hulu brand strategy and acquisition and retention channels, among other duties. STORY: Hulu Lands Brooklyn Nine-Nine, Mindy, More NBCUniversal Series"
+      "LOL LOL LOL"
     ],
     "keywords": [
       [
@@ -32,34 +32,34 @@
     ],
     "opengraph": [
       {
-        "site_name": "The Hollywood Reporter",
-        "description": "Hulu has nabbed marketing veteran Jenny Wall from rival Netflix.She joins the online streamer as svp and head of marketing and will oversee Hulu brand strategy and acquisition and retention channels, among other duties.STORY: Hulu Lands &#39;Brooklyn Nine-Nine,&#39; &#39;Mindy,&#39; More NBCUniversal Series",
+        "site_name": "Some Where",
+        "description": "Some desc",
         "type": "article",
-        "url": "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669",
-        "image": "http://www.hollywoodreporter.com/sites/default/files/imagecache/small_144x81/2014/05/jenny_wall.jpg",
-        "title": "Hulu Taps Netflix Marketing Vet Jenny Wall"
+        "url": "http://someurl.com/somthing/nothing",
+        "image": "http://somelongimage.com/image.jpg",
+        "title": "Some title"
       }
     ],
     "twitter": [
       {
         "card": "summary_large_image",
         "creator": "@THR",
-        "url": "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669",
+        "url": "http://moredomains.com",
         "site": "@THR"
       }
     ]
   },
   "normalized_url": [
-    "http://hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669"
+    "http://i-m-tired-of-writing-this.com"
   ],
   "retweet_count": [
     0
   ],
   "title": [
-    "Hulu Taps Netflix Marketing Vet Jenny Wall - The Hollywood Reporter"
+    "There should be a better way to do this"
   ],
   "url": [
-    "http://www.hollywoodreporter.com/news/hulu-taps-netflix-marketing-vet-703669"
+    "http://but-im-lazy-lol.com/lolololol'"
   ]
 
 }
