@@ -25,14 +25,13 @@ describe DaFace::Api::Push do
     it 'returns subscription list' do
       data = DaFace::Api::Push.get
       expect(data).not_to eq(nil)
-      expect(data.class).to eq(Array)
-      expect(data.map(&:class).uniq).to eq([DaFace::Api::PushSubscription])
+      expect(data.class).to eq(Hash)
     end
   end
 
   describe '.log' do
     before do
-      Excon.stub({:path => '/push/log?subscription_id=some_sub_id'}, 
+      Excon.stub({:path => '/push/log?id=some_sub_id'}, 
                  {:body => json_fixture('api_responses/log.json').to_json, :status => 200})
     end
 

@@ -10,11 +10,23 @@ module DaFace
                   :last_success, :remaining_bytes, :lost_data
 
       def initialize data={}
+        assign_attributes! data
+        normalize_attributes!
+        return self
+      end
+
+      def assign_attributes! data
         allowed_attributes.each do |attr|
           unless data[attr].nil?
             self.instance_variable_set("@#{attr}".to_sym, data[attr])
           end
         end
+      end
+
+      def update! data={}
+        params = data.delete :output_params
+        assign_attributes! data
+        self.output_params.merge! params
         normalize_attributes!
         return self
       end
@@ -29,8 +41,8 @@ module DaFace
       def normalize_attributes!
         @last_request = parse_timestamp(@last_request) if @last_request
         @last_success = parse_timestamp(@last_success) if @last_success
-        @start = parse_timestamp(@start) if @start
-        @end = parse_timestamp(@end) if @end
+        @start = (@start && @start > 0) ? parse_timestamp(@start) : nil
+        @end = (@end && @end > 0) ? parse_timestamp(@end) : nil
         @created_at = parse_timestamp(@created_at) if @created_at
       end
 
@@ -79,7 +91,9 @@ module DaFace
       end
 
       def create
-        DaFace::Api::Push.create self.generate_config
+        data = DaFace::Api::Push.create self.generate_config
+        return data if data.keys.include? :error
+        update! data
       end
       
       def pause
@@ -99,7 +113,15 @@ module DaFace
       end
 
       def log
-        DaFace::Api::Push.log self.id
+        data = DaFace::Api::Push.log self.id
+        return data if data.keys.include? :error
+        DaFace::Api::PushLog.new data
+      end
+
+      def get
+        data = DaFace::Api::Push.get :id => self.id
+        return data if data.keys.include? :error
+        update! data
       end
 
     end

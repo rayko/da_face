@@ -16,40 +16,41 @@ module DaFace
       end
       
       def self.update subscription_id
-        response = connection.put 'push/update', {:subscription_id => subscription_id}
+        response = connection.put 'push/update', {:id => subscription_id}
         return response
       end
       
       def self.pause subscription_id
-        response = connection.put 'push/pause', {:subscription_id => subscription_id}
+        response = connection.put 'push/pause', {:id => subscription_id}
         return response
       end
       
       def self.resume subscription_id
-        response = connection.put 'push/resume', {:subscription_id => subscription_id}
+        response = connection.put 'push/resume', {:id => subscription_id}
         return response
       end
       
       def self.stop subscription_id
-        response = connection.put 'push/stop', {:subscription_id => subscription_id}
+        response = connection.put 'push/stop', {:id => subscription_id}
         return response
       end
       
       def self.delete subscription_id
-        response = connection.put 'push/delete', {:subscription_id => subscription_id}
+        response = connection.put 'push/delete', {:id => subscription_id}
         return response
       end
       
       # TODO Make this work with pagination
       def self.log subscription_id
-        response = connection.get 'push/log', {:subscription_id => subscription_id}
+        response = connection.get 'push/log', {:id => subscription_id}
         return response
       end
 
       # TODO Make this work with pagination
       def self.get params={}
         response = connection.get 'push/get', params
-        response[:subscriptions].collect{|s| DaFace::Api::PushSubscription.new(s)}
+        # response[:subscriptions].collect{|s| DaFace::Api::PushSubscription.new(s)}
+        return response
       end
 
       def self.connection
