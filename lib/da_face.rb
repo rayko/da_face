@@ -40,6 +40,7 @@ module DaFace
 
   def self.configure
     yield(configuration)
+    self.configuration
   end
 
   def self.reset_config

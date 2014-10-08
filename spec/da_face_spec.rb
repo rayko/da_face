@@ -29,5 +29,14 @@ describe DaFace do
       expect(DaFace.configuration.user).to eq('someone')
       expect(DaFace.configuration.api_key).to eq('some key')
     end
+
+    it 'returns configuration' do
+      obj = DaFace.configure do |config|
+        config.user = 'someone'
+      end
+
+      expect(obj.class).to eq(DaFace::Configuration)
+      expect(obj).to eq(DaFace.configuration)
+    end
   end
 end

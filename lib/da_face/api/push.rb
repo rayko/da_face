@@ -67,7 +67,7 @@ module DaFace
 
       private
       def self.raise_push_error_if_error response
-        if response.keys.include? :error
+        if response.kind_of?(Hash) && response.keys.include?(:error)
           raise DaFace::PushError.new(response[:message]) if response.keys.include? :message
           raise DaFace::PushError.new(response[:error]) if response.keys.include? :error
         end
