@@ -2,9 +2,9 @@
 
 DaFace is an interface to interact with Datasift API. The good thing about DaFace is that it will present you with pretty data that you can use on your application.
 
-# What the hell means DaFace?
+# DaFace?
 
-Da-tasift Inter-face -> DaFace
+[Da]tasift Inter[face] -> DaFace
 
 ## Installation
 
