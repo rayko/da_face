@@ -28,7 +28,7 @@ describe DaFace::Datasift::TwitterUserStatus do
 
     describe '#status' do
       it 'is present' do
-        expect(@status.status).to eq(@user_suspended[:status])
+        expect(@status.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_SUSPEND)
       end
     end
   end
