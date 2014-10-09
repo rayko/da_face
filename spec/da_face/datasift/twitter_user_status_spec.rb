@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DaFace::Datasift::TwitterUserStatus do
   before do
     @parser = DaFace::Datasift::Parser.new
-    fixture = json_fixture('notifications/user_suspended.json')['twitter']
+    fixture = json_fixture('notifications/user_suspend.json')['twitter']
     @user_suspended = @parser.symbolize_keys(fixture.keys, fixture)
   end
 

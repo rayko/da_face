@@ -4,11 +4,7 @@ module DaFace
       include DaFace::Utilities
 
       def build_object data
-        obj = DaFace::Datasift::DaObject.new 
-
-        obj.interaction = DaFace::Datasift::Interaction.new data[:interaction]
-        
-        return obj
+        DaFace::Datasift::DaObject.new data
       end
 
       def parse_from_json json=nil

@@ -1,0 +1,16 @@
+{
+   "interaction": {
+       "id": "1e16ebc90331a780e0748d58940628be",
+       "type": "twitter",
+       "created_at": "Thu, 15 Mar 2012 16:33:15 +0000",
+       "author": {
+            "id": 15005238
+       }
+   },
+   "twitter": {
+       "user": {
+            "id": 15005238
+       },
+       "status": "user_delete"
+   }
+}
