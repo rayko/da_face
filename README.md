@@ -89,6 +89,19 @@ As mentioned avobe, support is limited, so make sure DaFace suits your needs bef
 
 Comments, complains, recommendations, ideas, are all welcome.
 
+Supported Datasift Objects:
+
+- Interaction
+- Demographic
+- Language
+- Links
+- Salience
+- Twitter
+- Twitter Delete Notifications
+- Twitter User Notifications
+
+For the case of Twitter objects, there's support for parsing a normal tweet or retweets. The "tweet" method of the Twitter object will always return the relevant tweet, which will be the normal tweet, or the retweet for the case of a retweet. The original tweet will be available in the "retweeted" method.
+
 ## Contributing
 
 1. Fork it ( https://github.com/rayko/da_face/fork )

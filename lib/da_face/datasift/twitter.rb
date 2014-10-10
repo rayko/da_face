@@ -15,10 +15,29 @@ module DaFace
 
       def initialize data
         if data.keys.include? :retweet
-          @retweet = DaFace::Twitter::Parser.parse data[:retweet], true
-          @retweeted = DaFace::Twitter::Parser.parse data[:retweeted], false
+          @tweet = DaFace::Twitter::Parser.parse extract_retweet_info(data), true
+          @retweeted = DaFace::Twitter::Parser.parse extract_tweet_info(data), false
+          @retweet = true
         else
-          @tweet = DaFace::Twitter::Parser.parse data, false
+          @tweet = DaFace::Twitter::Parser.parse extract_tweet_info(data), false
+          @retweet = false
+        end
+      end
+
+      def retweet?
+        @retweet
+      end
+
+      private
+      def extract_retweet_info data
+        data[:retweet].merge({:text => data[:retweeted][:text]})
+      end
+
+      def extract_tweet_info data
+        if data[:retweet]
+          data[:retweeted]
+        else
+          data
         end
       end
 
