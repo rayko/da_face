@@ -52,7 +52,7 @@ Push Interface:
 You can use DaFace to interact with the Push endpoints of the API, and define or handle subscriptions.
 You can create a subscription with:
 
-    subscription = Daface::Api::PushSubscription.new :name => 'Test', :output_params => {:auth => {:type => 'none'}, :url => 'http://somewhere.com', :delivery_frequency => 10}
+    subscription = Daface.create_subscription :name => 'Test', :output_params => {:auth => {:type => 'none'}, :url => 'http://somewhere.com', :delivery_frequency => 10}
 
 You can then do other stuff with the subscription:
 
@@ -66,7 +66,7 @@ You can then do other stuff with the subscription:
 
 You can for example get a list of subscriptions:
 
-    DaFace::Api::PushSubscription.get_all
+    DaFace.get_subscriptions
 
 And then perform any needed operation from the Array you get. All objects inside will be DaFace::Api::PushSubscription objects.
 
