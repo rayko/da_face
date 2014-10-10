@@ -34,18 +34,36 @@ require "excon"
 module DaFace
   class << self
     attr_accessor :configuration
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
+
+    def configure
+      yield(configuration)
+      self.configuration
+    end
+
+    def reset_config
+      @configuration = Configuration.new
+    end
+
+    def create_subscription data={}
+      DaFace::Api::PushSubscription.new data
+    end
+
+    def parse_datasift_collection data
+      DaFace::Datasift::Parser.new.parse_collection(data)
+    end
+
+    def parse_datasift_object data
+      DaFace::Datasift::Parser.new.parse_from_json(data)
+    end
+    
+    def get_subscriptions
+      DaFace::Api::PushSubscription.get_all
+    end
+
   end
 
-  def self.configuration
-    @configuration ||= Configuration.new
-  end
-
-  def self.configure
-    yield(configuration)
-    self.configuration
-  end
-
-  def self.reset_config
-    @configuration = Configuration.new
-  end
 end
