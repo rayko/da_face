@@ -44,6 +44,12 @@ describe DaFace::Twitter::User do
       end
     end
 
+    describe '#favorites_count' do
+      it 'is present' do
+        expect(@user.favorites_count).to eq(@user.favourites_count)
+      end
+    end
+
     describe '#friends_count' do
       it 'is present' do
         expect(@user.friends_count).to eq(@data[:friends_count])

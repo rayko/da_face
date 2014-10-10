@@ -62,6 +62,13 @@ describe DaFace::Utilities do
       expect(@utilities.parse_timestamp(time)).to eq(Time.at(time))
     end
 
+    it 'returns what it gets if not recognized' do
+      time = Time.now
+      something = Object.new
+      expect(@utilities.parse_timestamp(time)).to eq(time)
+      expect(@utilities.parse_timestamp(something)).to eq(something)
+    end
+
   end
 
 end

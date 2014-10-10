@@ -24,6 +24,12 @@ describe DaFace::Twitter::Tweet do
       end
     end
 
+    describe '#id_str' do
+      it 'is present' do
+        expect(@tweet.id_str).to eq(@tweet.id.to_s)
+      end
+    end
+
     describe '#created_at' do
       it 'is present' do
         expect(@tweet.created_at.class).to eq(Time)

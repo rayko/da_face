@@ -17,10 +17,6 @@ module DaFace
         return self
       end
 
-      def inspect
-        "<#{self.class}:0x#{(self.object_id << 1).to_s(16)}>"
-      end
-      
       def allowed_attributes
         [:code, :created_at, :hops, :meta, :normalized_url,
          :retweet_count, :title, :url]
