@@ -10,9 +10,11 @@ GEM
   specs:
     coderay (1.1.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     excon (0.39.6)
     json (1.8.1)
     method_source (0.8.2)
+    multi_json (1.10.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -30,6 +32,11 @@ GEM
     rspec-mocks (3.1.2)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.1)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.6.0)
 
 PLATFORMS
@@ -41,3 +48,4 @@ DEPENDENCIES
   pry
   rake (~> 10.0)
   rspec
+  simplecov

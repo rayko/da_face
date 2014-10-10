@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'da_face'
 
 def fixture_path
