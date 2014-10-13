@@ -3,7 +3,7 @@ module DaFace
     class Twitter
       include DaFace::Utilities
       
-      attr_accessor :retweet, :retweeted, :tweet, :status
+      attr_reader :retweet, :retweeted, :tweet, :status
 
       def self.new data
         if data[:status]
@@ -30,12 +30,12 @@ module DaFace
 
       private
       def extract_retweet_info data
-        data[:retweet].merge({:text => data[:retweeted][:text]})
+        data[:retweet]
       end
 
       def extract_tweet_info data
         if data[:retweet]
-          data[:retweeted]
+          data[:retweeted].merge({:text => (data[:retweeted][:text] || data[:retweet][:text])})
         else
           data
         end

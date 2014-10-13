@@ -44,6 +44,7 @@ describe DaFace::Datasift::Twitter do
         expect(@twitter.tweet.id).to eq(@data[:retweet][:id].to_i)
         expect(@twitter.retweeted.id).to eq(@data[:retweeted][:id].to_i)
         expect(@twitter.retweeted.id).not_to eq(@twitter.tweet.id)
+        expect(@twitter.tweet.text).to eq(@twitter.retweeted.text)
         expect(@twitter.retweet?).to eq(true)
       end
     end
