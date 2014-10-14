@@ -3,13 +3,13 @@ require 'spec_helper'
 describe DaFace::Datasift::DaObject do
   before do
     @parser = DaFace::Datasift::Parser.new
-    fixture = json_fixture('interactions/simple.json')
-    @interaction_data = @parser.symbolize_keys(fixture.keys, fixture)
+    @fixture = json_fixture('interactions/simple.json')
+    @interaction_data = @parser.symbolize_keys(@fixture.keys, @fixture)
   end
 
   describe '#new' do
     it 'creates a DaObject object' do
-      obj = DaFace::Datasift::DaObject.new @interaction_data
+      obj = DaFace::Datasift::DaObject.new @interaction_data, @fixture
 
       expect(obj.class).to eq(DaFace::Datasift::DaObject)
     end
@@ -21,9 +21,20 @@ describe DaFace::Datasift::DaObject do
 
   describe 'attributes' do
     before do 
-      @da_object = DaFace::Datasift::DaObject.new @interaction_data
+      @da_object = DaFace::Datasift::DaObject.new @interaction_data, @fixture
     end
 
+    describe 'raw' do
+      it 'is present' do
+        expect(@da_object.raw).not_to eq(nil)
+      end
+
+      it 'has string keys' do
+        expect(@da_object.raw.keys.map(&:class).uniq.size).to eq(1)
+        expect(@da_object.raw.keys.map(&:class).uniq.first).to eq(String)
+      end
+    end
+    
     describe '#interaction' do
       it 'is present' do
         expect(@da_object.interaction).not_to eq(nil)

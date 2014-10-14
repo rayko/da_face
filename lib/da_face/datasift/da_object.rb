@@ -5,9 +5,10 @@ module DaFace
       TWITTER_DELETE_NOTIFICATION = :delete_notification
       TWITTER_USER_NOTIFICATION = :user_notification
       
-      attr_reader :interaction, :demographic, :links, :twitter, :salience, :language, :kind
+      attr_reader :interaction, :demographic, :links, :twitter, :salience, :language, :kind, :raw
 
-      def initialize data={}
+      def initialize data={}, raw_data={}
+        @raw = raw_data
         if data[:deleted]
           @twitter = DaFace::Datasift::TwitterDeleteNotification.new(data)
         else
