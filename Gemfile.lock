@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    da_face (0.0.1)
+    da_face (0.0.2)
       excon
       json
 
