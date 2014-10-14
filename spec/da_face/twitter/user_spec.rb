@@ -111,6 +111,12 @@ describe DaFace::Twitter::User do
         expect(@user.verified).to eq(@data[:verified])
       end
     end
+
+    describe '#protected' do
+      it 'is present' do
+        expect(@user.protected).not_to eq(nil)
+      end
+    end
     
   end
 end

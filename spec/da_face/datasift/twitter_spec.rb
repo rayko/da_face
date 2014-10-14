@@ -48,10 +48,6 @@ describe DaFace::Datasift::Twitter do
         expect(@twitter.retweet?).to eq(true)
       end
     end
-    
-
-
-
   end
 end
 
