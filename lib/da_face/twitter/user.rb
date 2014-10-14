@@ -5,7 +5,7 @@ module DaFace
 
       attr_reader :id, :created_at, :favourites_count, :friends_count, :geo_enabled,
                   :lang, :listed_count, :name, :profile_image_url, :profile_image_url_https,
-                  :screen_name, :statuses_count, :verified, :protected
+                  :screen_name, :statuses_count, :verified, :protected, :followers_count
 
 
       def initialize data={}
@@ -21,7 +21,7 @@ module DaFace
       def allowed_attributes
         [:id, :created_at, :favourites_count, :friends_count, :geo_enabled,
          :lang, :listed_count, :name, :profile_image_url, :profile_image_url_https,
-         :screen_name, :statuses_count, :verified, :protected]
+         :screen_name, :statuses_count, :verified, :protected, :followers_count]
       end
 
       def normalize_attributes!
