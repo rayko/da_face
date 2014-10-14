@@ -76,6 +76,46 @@ describe DaFace::Datasift::DaObject do
         expect(@da_object.kind).to eq(DaFace::Datasift::DaObject::TWITTER_INTERACTION)
       end
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter interaction' do
+        expect(@da_object.twitter_interaction?).to eq(true)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter interaction' do
+        expect(@da_object.notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter interaction' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter interaction' do
+        expect(@da_object.twitter_user_status?).to eq(false)
+      end
+    end
   end
 
 
@@ -96,6 +136,47 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_SUSPEND)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+    
   end
 
   context 'unsuspend message' do
@@ -113,6 +194,48 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_UNSUSPEND)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+
+
   end
 
 
@@ -131,6 +254,47 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_DELETE)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+
   end
 
   context 'undelete message' do
@@ -148,6 +312,47 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_UNDELETE)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+
   end
 
   context 'protect message' do
@@ -165,6 +370,47 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_PROTECT)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+
   end
 
   context 'unprotect message' do
@@ -182,6 +428,47 @@ describe DaFace::Datasift::DaObject do
     it 'has proper status value' do
       expect(@da_object.twitter.status).to eq(DaFace::Datasift::TwitterUserStatus::STATUS_UNPROTECT)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter user status' do
+        expect(@da_object.twitter_delete_notification?).to eq(false)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter user status' do
+        expect(@da_object.twitter_user_status?).to eq(true)
+      end
+    end
+
   end
 
 
@@ -197,6 +484,47 @@ describe DaFace::Datasift::DaObject do
       expect(@da_object.twitter.class).to eq(DaFace::Datasift::TwitterDeleteNotification)
       expect(@da_object.kind).to eq(DaFace::Datasift::DaObject::TWITTER_DELETE_NOTIFICATION)
     end
+
+    describe '#twitter_interaction?' do
+      it 'is present' do
+        expect(@da_object.twitter_interaction?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter delete message' do
+        expect(@da_object.twitter_interaction?).to eq(false)
+      end
+    end
+
+    describe '#notification?' do
+      it 'is present' do
+        expect(@da_object.notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter delete message' do
+        expect(@da_object.notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_delete_notification?' do
+      it 'is present' do
+        expect(@da_object.twitter_delete_notification?).not_to eq(nil)
+      end
+
+      it 'is false for a twitter delete message' do
+        expect(@da_object.twitter_delete_notification?).to eq(true)
+      end
+    end
+
+    describe '#twitter_user_status?' do
+      it 'is present' do
+        expect(@da_object.twitter_user_status?).not_to eq(nil)
+      end
+
+      it 'is true for a twitter delete message' do
+        expect(@da_object.twitter_user_status?).to eq(false)
+      end
+    end
+
   end
 
 end
