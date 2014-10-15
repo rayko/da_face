@@ -36,6 +36,12 @@ describe DaFace::Utilities do
       expect(@utilities.parse_uri(url).kind_of?(URI)).to eq(true)
       expect(@utilities.parse_uri(url).to_s).to eq(url)
     end
+
+    it 'tolerates unencoded uris' do
+      url = "http://openbook.etoro.com/?SMT=2&LID=1&NID=3&eCID=nRZtmeSGur8oFg3j7LSEaQ==&eGCID=tmivAfzoieVW7mLDcSL8rw==&PID=0&IID=11&IsBuy=False&G=62&UGC=I?m very pleased with my latest earnings"
+      expect(Proc.new{@utilities.parse_uri(url)}).not_to raise_error
+      expect(@utilities.parse_uri(url)).to eq(URI(URI.encode(url)))
+    end
   end
 
   describe '#parse_timestamp' do

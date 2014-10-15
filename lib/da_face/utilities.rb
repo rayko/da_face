@@ -26,7 +26,7 @@ module DaFace
     end
 
     def parse_uri url
-      URI(url) if url
+      URI(URI.encode(url)) if url
     end
     
     def parse_timestamp timestamp=nil
