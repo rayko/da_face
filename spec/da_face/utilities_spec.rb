@@ -42,6 +42,18 @@ describe DaFace::Utilities do
       expect(Proc.new{@utilities.parse_uri(url)}).not_to raise_error
       expect(@utilities.parse_uri(url)).to eq(URI(URI.encode(url)))
     end
+
+    it 'returns same object if unable to parse to URI' do
+      expect(@utilities.parse_uri('[]').kind_of?(String)).to eq(true)
+    end
+  end
+
+  describe '#parse_json' do
+    it 'parses json data' do
+      data = fixture('interactions/simple.json')
+      expect(Proc.new{@utilities.parse_json(data)}).not_to raise_error
+      expect(@utilities.parse_json(data).class).to eq(Hash)
+    end
   end
 
   describe '#parse_timestamp' do

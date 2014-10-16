@@ -30,6 +30,7 @@ require "da_face/twitter/user"
 # External dependencies
 require "json"
 require "excon"
+require "yajl"
 
 module DaFace
   class << self

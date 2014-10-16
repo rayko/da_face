@@ -26,7 +26,11 @@ module DaFace
     end
 
     def parse_uri url
-      URI(URI.encode(url)) if url
+      begin
+        URI(URI.encode(url)) if url
+      rescue URI::InvalidURIError
+        return url
+      end
     end
     
     def parse_timestamp timestamp=nil
@@ -35,6 +39,10 @@ module DaFace
       return Time.at(timestamp) if timestamp.kind_of? Float
       return Time.parse(timestamp) if timestamp.kind_of? String
       return timestamp
+    end
+
+    def parse_json data
+      Yajl::Parser.new.parse(data)
     end
 
   end

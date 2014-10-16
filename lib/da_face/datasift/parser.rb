@@ -20,14 +20,14 @@ module DaFace
       def parse_collection json=nil
         raise DaFace::Datasift::MissingJson unless json
 
-        data = JSON.parse(json)
+        data = parse_json(json)
         return build_objects(data)
       end
       
       def parse_from_json json=nil
         raise DaFace::Datasift::MissingJson unless json
 
-        data = JSON.parse(json)
+        data = parse_json(json)
         return build_object(data)
       end
     end
