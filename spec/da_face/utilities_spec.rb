@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe DaFace::Utilities do
@@ -85,6 +86,12 @@ describe DaFace::Utilities do
       something = Object.new
       expect(@utilities.parse_timestamp(time)).to eq(time)
       expect(@utilities.parse_timestamp(something)).to eq(something)
+    end
+
+    it 'tolerates an erroneus string' do
+      time = "A\u0529Dú}V"
+      expect(Proc.new{@utilities.parse_timestamp(time)}).not_to raise_error
+      expect(@utilities.parse_timestamp(time)).to eq(time)
     end
 
   end

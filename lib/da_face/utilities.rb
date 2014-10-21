@@ -37,7 +37,11 @@ module DaFace
       return nil unless timestamp
       return Time.at(timestamp) if timestamp.kind_of? Fixnum
       return Time.at(timestamp) if timestamp.kind_of? Float
-      return Time.parse(timestamp) if timestamp.kind_of? String
+      begin
+        return Time.parse(timestamp) if timestamp.kind_of? String
+      rescue ArgumentError => error
+        return timestamp
+      end
       return timestamp
     end
 
