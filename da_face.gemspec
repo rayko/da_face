@@ -12,7 +12,6 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Interface to interact with Datasift API and get pretty data from them.}
   spec.homepage      = "https://github.com/rayko/da_face"
   spec.license       = "MIT"
-  spec.post_install_message = 'My name is Bond... James Bond. And I thank you for installing Agent DaFace 0.0.7. Enjoy!'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
