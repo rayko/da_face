@@ -49,7 +49,7 @@ module DaFace
           else
             {
               :limit => nil,
-              :remaining => nil.
+              :remaining => nil
             }
           end
         end
