@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    da_face (0.0.8)
+    da_face (0.0.9)
       excon
       json
       yajl-ruby
