@@ -45,6 +45,11 @@ module DaFace
       @rate_limit_status ||= DaFace::Api::RateLimitStatus.new
     end
 
+    def set_rate_limit_status
+      yield(rate_limit_status)
+      self.rate_limit_status
+    end
+
     def configure
       yield(configuration)
       self.configuration
