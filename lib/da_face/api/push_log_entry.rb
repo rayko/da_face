@@ -5,7 +5,7 @@ module DaFace
 
       def initialize data
         @request_time = Time.at data[:request_time]
-        @sucess = data[:success]
+        @success = data[:success]
         @subscription_id = data[:subscription_id]
         @message = data[:message]
       end
