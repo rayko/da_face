@@ -52,6 +52,9 @@ module DaFace
           '?' + URI.encode(params.collect{ |key, value| "#{key}=#{value}"}.join('&')) unless params.empty?        
         end
 
+        def set_rate_limit_status rate_limit, remaining
+          DaFace.rate_limit_status = DaFace::Api::RateLimitStatus.new(:limit => rate_limit, :remaining => remaining)
+        end
 
       end
     end

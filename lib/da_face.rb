@@ -7,6 +7,7 @@ require "da_face/api/adapter"
 require "da_face/api/adapters/base"
 require "da_face/api/adapters/excon_adapter"
 require "da_face/api/adapters/em_http_request_adapter"
+require "da_face/api/rate_limit_info"
 require "da_face/api/push"
 require "da_face/api/push_log"
 require "da_face/api/push_log_entry"
@@ -34,10 +35,14 @@ require "yajl"
 
 module DaFace
   class << self
-    attr_accessor :configuration
+    attr_accessor :configuration, :rate_limit_status
 
     def configuration
       @configuration ||= Configuration.new
+    end
+
+    def rate_limit_status
+      @rate_limit_status ||= DaFace::Api::RateLimitStatus.new
     end
 
     def configure
