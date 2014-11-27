@@ -53,10 +53,8 @@ module DaFace
         end
 
         def set_rate_limit_status rate_limit, remaining
-          DaFace.set_rate_limit_status do |status|
-            status.limit = rate_limit
-            status.remaining = remaining
-          end
+          DaFace.rate_limit_status.limit = rate_limit
+          DaFace.rate_limit_status.remaining = remaining
         end
 
       end
