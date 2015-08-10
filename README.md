@@ -1,3 +1,7 @@
+# Warning
+
+Datasift is dropping support to retrive Twitter data, since Gnip will now deliver it. All Twitter related parsers will be useless. However this gem will still be working for other defined endpoints to handle Datasift streams and account data.
+
 # DaFace
 
 DaFace is an interface to interact with Datasift API. The good thing about DaFace is that it will present you with pretty data that you can use on your application.
